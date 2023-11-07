@@ -46,9 +46,8 @@ export default function Header() {
   const [activePage, setActivePage] = useState(pathname);
   const [activeSection, setActiveSection] = useState("#topMovies");
 
-  let hoverTimeout: NodeJS.Timeout;
   return (
-    <motion.div className="w-full sm:w-[40em] h-[5em] sm:h-min z-[1000] fixed sm:top-4 left-1/2 -translate-x-1/2 px-4 py-2 bg-slate-300/30 sm:rounded-full flex items-center justify-between gap-3">
+    <motion.div className="w-full sm:w-[40em] h-24 sm:h-min z-[1000] fixed sm:top-4 left-1/2 -translate-x-1/2 px-4  bg-slate-300/30 sm:rounded-full flex items-center justify-between gap-3">
       <span className="  sm:px-4 sm:py-2  text-2xl font-bold">🎥</span>
       <motion.nav className="flex flex-wrap sm:justify-between items-center text-sm">
         {menu.map((page, index) => (
@@ -69,9 +68,12 @@ export default function Header() {
             onHoverStart={() => {
               setActivePage(page.link);
             }}
-            // onHoverEnd={() => {
-            //   setActivePage(pathname);
-            // }}
+            onHoverEnd={() => {
+              setActivePage(pathname);
+            }}
+            onClick={() => {
+              setActivePage(page.link);
+            }}
           >
             <motion.div layout>
               <Link href={page.link}>
@@ -102,6 +104,7 @@ export default function Header() {
                     >
                       {section.name}
                     </motion.span>
+                    {/* underline */}
                     {activeSection === section.link && (
                       <motion.div
                         layoutId="underline"
