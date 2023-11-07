@@ -60,24 +60,24 @@ export default function Header() {
               damping: 30,
             }}
             key={index}
-            className={`px-2 py-1 sm:px-4 sm:py-2  rounded-full flex gap-3 ${
+            className={`px-2 py-1 min-w-[100px] sm:px-4 sm:py-2  rounded-full flex gap-3 ${
               isPageActive(activePage, page.link)
-                ? "bg-slate-300/50"
+                ? "bg-slate-300/50 "
                 : "text-white/50"
             }`}
             onHoverStart={() => {
               setActivePage(page.link);
             }}
-            onHoverEnd={() => {
-              setActivePage(pathname);
-            }}
-            onClick={() => {
-              setActivePage(page.link);
-            }}
           >
             <motion.div layout>
               <Link href={page.link}>
-                <span>{page.name}</span>
+                <span
+                  className={
+                    isPageActive(pathname, page.link) ? "" : "text-white/50"
+                  }
+                >
+                  {page.name}
+                </span>
               </Link>
             </motion.div>
 

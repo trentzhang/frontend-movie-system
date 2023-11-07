@@ -15,7 +15,7 @@ export function Providers({ children }: { children: React.ReactNode }) {
         key={usePathname()}
         initial={onTheRight}
         animate={inTheCenter}
-        exit={onTheLeft}
+        // exit={onTheLeft}
         transition={transition}
       >
         {children}

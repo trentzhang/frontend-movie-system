@@ -21,7 +21,7 @@ export default function RootLayout({
       <body
         className={
           inter.className +
-          "flex min-h-screen flex-col items-center justify-between "
+          "flex min-h-screen flex-col items-center justify-between bg-black/50 text-white"
         }
       >
         <Header />
