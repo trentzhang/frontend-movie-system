@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Header from "../Components/Header";
-import { Providers } from "@/provider/provider";
+import { Providers } from "@/provider/PageTrasitionProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -17,11 +17,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html
+      lang="en"
+      className="!scroll-smooth min-h-screen pt-24  flex  flex-col items-center justify-between bg-black"
+    >
       <body
         className={
           inter.className +
-          "flex min-h-screen flex-col items-center justify-between bg-black/50 text-white"
+          "flex  flex-col items-center justify-between bg-black/50 text-white"
         }
       >
         <Header />

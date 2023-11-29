@@ -2,11 +2,11 @@ import { coverURL } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
 
-interface MovieCardProps {
+interface ListCardProps {
   movie: Movie;
 }
 
-export function MovieCard({ movie }: MovieCardProps) {
+export function ListCard({ movie }: ListCardProps) {
   return (
     <div className="relative group overflow-hidden rounded-xl w-40 h-60">
       {/* cover image  */}
@@ -21,9 +21,9 @@ export function MovieCard({ movie }: MovieCardProps) {
 
       {/* hover details */}
       <div className=" flex items-center justify-center absolute top-0 h-full w-full text-sm backdrop-blur-sm  bg-black/60 opacity-0 group-hover:opacity-100 transition duration-500 ease-in-out text-white font-medium p-5">
-        <Link href={`/movie/${movie.id}`}>
-          <h1 className="">{movie.title}</h1>
-        </Link>
+        {/* <Link href={`/movie/${movie.id}`}> */}
+        <h1 className="">{movie.title}</h1>
+        {/* </Link> */}
       </div>
     </div>
   );

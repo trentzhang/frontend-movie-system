@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 
 import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
@@ -11,8 +11,8 @@ const menu = [
     link: "/",
     sections: [
       { name: "Top Movies", link: "#topMovies" },
-      { name: "Top Lists", link: "#topLists" },
       { name: "Random Movies", link: "#randomMovies" },
+      { name: "Top Lists", link: "#topLists" },
     ],
   },
   {
@@ -46,8 +46,10 @@ export default function Header() {
   const [activePage, setActivePage] = useState(pathname);
   const [activeSection, setActiveSection] = useState("#topMovies");
 
+  const [pageLoading, setPageLoading] = useState(false);
+
   return (
-    <motion.div className="w-full sm:w-[40em] h-24 sm:h-min z-[1000] fixed sm:top-4 left-1/2 -translate-x-1/2 px-4  bg-slate-300/30 sm:rounded-full flex items-center justify-between gap-3">
+    <motion.div className="w-full sm:w-[40em] h-24 sm:h-min z-[1000] fixed top-0 sm:top-4 left-1/2 -translate-x-1/2 px-4  bg-slate-600/30 backdrop-blur-md sm:rounded-full flex items-center justify-between gap-3">
       <span className="  sm:px-4 sm:py-2  text-2xl font-bold">🎥</span>
       <motion.nav className="flex flex-wrap sm:justify-between items-center text-sm">
         {menu.map((page, index) => (

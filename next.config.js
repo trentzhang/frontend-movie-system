@@ -8,6 +8,12 @@ const nextConfig = {
         port: "",
         pathname: "/**/*.{jpg,jpeg,png,webp}",
       },
+      {
+        protocol: "http",
+        hostname: "st.depositphotos.com",
+        port: "",
+        pathname: "/**/*.{jpg,jpeg,png,webp}",
+      },
     ],
   },
 };
