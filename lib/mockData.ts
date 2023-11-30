@@ -68,3 +68,13 @@ const movieAPI = {
     ],
   },
 };
+
+const lists = [
+  {
+    id: 26,
+    name: "New List!",
+    description: "",
+    creator: "rexzhang68@gmail.com",
+    liked_num: 1,
+  },
+];

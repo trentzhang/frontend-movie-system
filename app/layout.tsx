@@ -19,7 +19,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className="!scroll-smooth min-h-screen pt-24  flex  flex-col items-center justify-between bg-black/90 text-white overflow-x-hidden"
+      className="!scroll-smooth min-h-screen py-24  flex  flex-col items-center justify-between bg-black/90 text-white overflow-x-hidden"
     >
       <body
         className={

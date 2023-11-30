@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { LikedUsers } from "./LikedUsers";
+import ListsGroup from "@/Components/shared/ListsGroup";
 
 function SectionTitle({ children }: { children: React.ReactNode }) {
   return <h1 className="text-3xl text-white font-bold mt-2">{children}</h1>;
@@ -48,9 +49,10 @@ export default function MovieDetailCard({ data }: { data: MovieAPI }) {
         <SectionTitle>Description:</SectionTitle>
         <p className="text-break">{movieData.description}</p>
         <SectionTitle>They also liked this movie:</SectionTitle>
-        <LikedUsers liked_users={movieData.liked_users}></LikedUsers>
+        <LikedUsers liked_users={movieData.liked_users} />
         <SectionTitle>Lists you may be interested in:</SectionTitle>
-        {/* <ListCardGroup Lists={movieData.lists} /> */}
+        {/* <ListsGroup lists={movieData.lists} /> */}
+        <ListsGroup lists={movieData.related_lists} />
         {/* <Stack direction="horizontal" gap={3}></Stack> */}
         <SectionTitle>User review</SectionTitle>
         {/* <CommentSection movieData={movieData} /> */}

@@ -19,7 +19,7 @@ async function getData() {
 export default async function Home() {
   const data = await getData();
   const { moviesRandom, moviesSortedByRating, lists } = data.data;
-  //   console.log("moviesSortedByRating", moviesSortedByRating);
+
   return (
     <main className="">
       <TopMovies movies={moviesSortedByRating} />
