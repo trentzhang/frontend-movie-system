@@ -43,8 +43,8 @@ export function Providers({ children }: { children: React.ReactNode }) {
           damping: 25,
         }}
       >
-        <FrozenRouter>{children}</FrozenRouter>
-        {/* {children} */}
+        {/* <FrozenRouter>{children}</FrozenRouter> */}
+        {children}
       </motion.div>
     </AnimatePresence>
   );
