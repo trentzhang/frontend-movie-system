@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Avatar, Tooltip } from "@nextui-org/react";
 
-const renderTooltip = (props) => (
+const renderTooltip = (props: any) => (
   <div id="button-tooltip" {...props}>
     {props.username} {props.email}
   </div>
