@@ -1,7 +1,9 @@
-export default function Page({ params }: { params: { id: string } }) {
-  return (
-    <main className="min-h-screen pt-24  bg-gray-800">
-      User page: {params.id}
-    </main>
+import UserDetail from "@/Components/page/user/UserDetail";
+import { getData } from "@/lib/dataFetchers";
+
+export default async function Page({ params }: { params: { id: string } }) {
+  const data = await getData(
+    `${process.env.backendUrl}/user/full/${params.id}`
   );
+  return <UserDetail data={data} />;
 }

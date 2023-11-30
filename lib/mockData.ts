@@ -78,3 +78,35 @@ const lists = [
     liked_num: 1,
   },
 ];
+const listAPI = {
+  message: "OK",
+  data: {
+    id: 26,
+    name: "New List!",
+    description: "",
+    creator: "rexzhang68@gmail.com",
+    liked_num: 1,
+    movies: [movieAPI.data],
+  },
+};
+const userAPI = {
+  message: "OK",
+  data: {
+    username: "ddd",
+    email: "rexzhang68@gmail.com",
+    gender: null,
+    birthday: null,
+    avatar: null,
+    likedMovies: [movieAPI.data],
+    likedLists: [
+      {
+        id: 26,
+        name: "New List!",
+        description: "",
+        creator: "rexzhang68@gmail.com",
+        liked_num: 1,
+      },
+    ],
+    lists: lists,
+  },
+};

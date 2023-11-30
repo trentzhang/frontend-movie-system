@@ -1,7 +1,5 @@
-import { auth } from "@/Components/shared/Firebase";
-import MovieDetailCard from "@/Components/page/movie/MovieDetailCard";
+import MovieDetailCard from "@/Components/page/movie/MovieDetail";
 import { getData } from "@/lib/dataFetchers";
-import Image from "next/image";
 
 async function MoviePage({ params }: { params: { id: string } }) {
   const movieData: MovieAPI = await getData(
