@@ -1,7 +1,7 @@
 // import React, { useEffect, useState } from "react";
 // import { Col, Container, Image, Row, Stack } from "react-bootstrap";
-import { auth } from "@/components/shared/Firebase";
-import MovieDetailCard from "@/components/page/movie/MovieDetailCard";
+import { auth } from "@/Components/shared/Firebase";
+import MovieDetailCard from "@/Components/page/movie/MovieDetailCard";
 import { getData } from "@/lib/dataFetchers";
 import Image from "next/image";
 // import { ListCardGroup } from "../Home/body/ListCardGroup";
