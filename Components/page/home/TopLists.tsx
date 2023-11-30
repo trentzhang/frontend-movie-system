@@ -2,7 +2,7 @@
 import Image from "next/image";
 import { MovieCard } from "./MovieCard";
 // import Carousel from "react-multi-carousel";
-import "react-multi-carousel/lib/styles.css";
+// import "react-multi-carousel/lib/styles.css";
 import { coverURL } from "@/lib/utils";
 import SectionTitle from "./SectionTitle";
 
