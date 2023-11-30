@@ -44,6 +44,7 @@ export function Providers({ children }: { children: React.ReactNode }) {
         }}
       >
         <FrozenRouter>{children}</FrozenRouter>
+        {/* {children} */}
       </motion.div>
     </AnimatePresence>
   );
