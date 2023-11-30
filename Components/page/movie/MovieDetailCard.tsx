@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { LikedUsers } from "./LikedUsers";
 import ListsGroup from "@/Components/shared/ListsGroup";
+import CommentSection from "./CommentSection";
 
 function SectionTitle({ children }: { children: React.ReactNode }) {
   return <h1 className="text-3xl text-white font-bold mt-2">{children}</h1>;
@@ -51,11 +52,9 @@ export default function MovieDetailCard({ data }: { data: MovieAPI }) {
         <SectionTitle>They also liked this movie:</SectionTitle>
         <LikedUsers liked_users={movieData.liked_users} />
         <SectionTitle>Lists you may be interested in:</SectionTitle>
-        {/* <ListsGroup lists={movieData.lists} /> */}
         <ListsGroup lists={movieData.related_lists} />
-        {/* <Stack direction="horizontal" gap={3}></Stack> */}
         <SectionTitle>User review</SectionTitle>
-        {/* <CommentSection movieData={movieData} /> */}
+        <CommentSection data={movieData.comments} />
       </div>
     </div>
   );

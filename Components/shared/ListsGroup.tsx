@@ -17,7 +17,7 @@ export default function ListsGroup({ lists }: ListsGroupProps) {
   return (
     <Table
       aria-label="Example empty table"
-      className={"w-[700px] dark "}
+      className={" dark "}
       classNames={{ wrapper: ["px-0"] }}
     >
       <TableHeader>
@@ -26,7 +26,7 @@ export default function ListsGroup({ lists }: ListsGroupProps) {
         <TableColumn>Creator</TableColumn>
         <TableColumn>Liked Number</TableColumn>
       </TableHeader>
-      <TableBody emptyContent={"No rows to display."}>
+      <TableBody emptyContent={"No lists to display."}>
         {lists.map((list, index) => (
           // list card
           <TableRow key={index}>
