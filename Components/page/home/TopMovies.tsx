@@ -1,16 +1,19 @@
 "use client";
-import { MovieCard } from "./MovieCard";
+import { motion } from "framer-motion";
 import SectionTitle from "./SectionTitle";
-// import Carousel from "react-multi-carousel";
-// import "react-multi-carousel/lib/styles.css";
+import { MovieCard } from "./MovieCard";
+import { useActiveSectionContext } from "@/context/active-section-context";
+import { useSectionInView } from "@/lib/hooks";
 
 interface TopMoviesProps {
   movies: Movie[];
 }
 
 export default function TopMovies({ movies }: TopMoviesProps) {
+  const { ref } = useSectionInView("topMovies");
   return (
-    <section
+    <motion.section
+      ref={ref}
       className="flex flex-col items-center justify-center w-full h-full  text-white scroll-mt-28 "
       id="topMovies"
     >
@@ -20,6 +23,6 @@ export default function TopMovies({ movies }: TopMoviesProps) {
           <MovieCard key={index} movie={movie} />
         ))}
       </div>
-    </section>
+    </motion.section>
   );
 }

@@ -4,15 +4,16 @@ import { usePathname, useRouter } from "next/navigation";
 
 import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
+import { useActiveSectionContext } from "@/context/active-section-context";
 
 const menu = [
   {
     name: "Home",
     link: "/",
     sections: [
-      { name: "Top Movies", link: "#topMovies" },
-      { name: "Random Movies", link: "#randomMovies" },
-      { name: "Top Lists", link: "#topLists" },
+      { name: "Top Movies", link: "#topMovies", id: "topMovies" },
+      { name: "Random Movies", link: "#randomMovies", id: "randomMovies" },
+      { name: "Top Lists", link: "#topLists", id: "topLists" },
     ],
   },
   {
@@ -44,7 +45,8 @@ function isPageActive(pathname: string, link: string) {
 export default function Header() {
   const pathname = usePathname();
   const [activePage, setActivePage] = useState(pathname);
-  const [activeSection, setActiveSection] = useState("#topMovies");
+  //   const [activeSection, setActiveSection] = useState("#topMovies");
+  const { activeSection, setActiveSection } = useActiveSectionContext();
 
   return (
     <motion.div className="w-full sm:w-[40em] h-24 sm:h-min z-[1000] fixed top-0 sm:top-4 left-1/2 -translate-x-1/2 px-4  bg-slate-600/30 backdrop-blur-md sm:rounded-full flex items-center justify-between gap-3  sm:border-slate-600 sm:border-1">
@@ -95,7 +97,8 @@ export default function Header() {
                     href={page.link + section.link}
                     key={index}
                     onClick={() => {
-                      setActiveSection(section.link);
+                      setActiveSection(section.id);
+                      console.log("section.id", section.id);
                     }}
                   >
                     <motion.span
@@ -108,7 +111,7 @@ export default function Header() {
                       {section.name}
                     </motion.span>
                     {/* underline */}
-                    {activeSection === section.link && (
+                    {activeSection === section.id && (
                       <motion.div
                         layoutId="underline"
                         className="border-b-2 border-white w-full"

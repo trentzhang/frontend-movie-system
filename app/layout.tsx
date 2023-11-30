@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Header from "../Components/shared/Header";
-import { Providers } from "@/provider/PageTrasitionProvider";
+import PageTransitionProvider from "@/provider/PageTrasitionProvider";
+import ActiveSectionContextProvider from "@/context/active-section-context";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -26,9 +27,11 @@ export default function RootLayout({
           inter.className + "flex  flex-col items-center justify-between"
         }
       >
-        <Header />
-        <Providers>{children}</Providers>
-        {/* <Footer /> */}
+        <ActiveSectionContextProvider>
+          <Header />
+          <PageTransitionProvider>{children}</PageTransitionProvider>
+          {/* <Footer /> */}
+        </ActiveSectionContextProvider>
       </body>
     </html>
   );

@@ -1,18 +1,21 @@
 "use client";
 import { MovieCard } from "./MovieCard";
-// import Carousel from "react-multi-carousel";
-// import "react-multi-carousel/lib/styles.css";
+import { useActiveSectionContext } from "@/context/active-section-context";
+import { motion } from "framer-motion";
 import SectionTitle from "./SectionTitle";
+import { useSectionInView } from "@/lib/hooks";
 
 interface TopMoviesProps {
   movies: Movie[];
 }
 
 export default function TopMovies({ movies }: TopMoviesProps) {
+  const { ref } = useSectionInView("randomMovies");
   return (
-    <section
+    <motion.section
       className="flex flex-col items-center justify-center w-full h-full  text-white scroll-mt-28"
       id="randomMovies"
+      ref={ref}
     >
       <SectionTitle>Random Movies</SectionTitle>
       <div className="w-full h-full flex gap-3 flex-wrap justify-center">
@@ -20,6 +23,6 @@ export default function TopMovies({ movies }: TopMoviesProps) {
           <MovieCard key={index} movie={movie} />
         ))}
       </div>
-    </section>
+    </motion.section>
   );
 }

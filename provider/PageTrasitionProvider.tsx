@@ -15,7 +15,7 @@ function FrozenRouter({ children }: { children: React.ReactNode }) {
   );
 }
 
-export function Providers({ children }: { children: React.ReactNode }) {
+export default function Providers({ children }: { children: React.ReactNode }) {
   const onTheRight = { x: "100%" };
   const inTheCenter = { x: 0 };
   const onTheLeft = { x: "-100%" };
