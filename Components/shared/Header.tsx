@@ -46,12 +46,13 @@ export default function Header() {
   const [activePage, setActivePage] = useState(pathname);
   const [activeSection, setActiveSection] = useState("#topMovies");
 
-  const [pageLoading, setPageLoading] = useState(false);
-
   return (
-    <motion.div className="w-full sm:w-[40em] h-24 sm:h-min z-[1000] fixed top-0 sm:top-4 left-1/2 -translate-x-1/2 px-4  bg-slate-600/30 backdrop-blur-md sm:rounded-full flex items-center justify-between gap-3">
-      <span className="  sm:px-4 sm:py-2  text-2xl font-bold">🎥</span>
-      <motion.nav className="flex flex-wrap sm:justify-between items-center text-sm">
+    <motion.div className="w-full sm:w-[40em] h-24 sm:h-min z-[1000] fixed top-0 sm:top-4 left-1/2 -translate-x-1/2 px-4  bg-slate-600/30 backdrop-blur-md sm:rounded-full flex items-center justify-between gap-3  sm:border-slate-600 sm:border-1">
+      <span className="  sm:px-4 sm:py-2  text-2xl font-bold">
+        <Link href={"/"}>🎥</Link>
+      </span>
+
+      <motion.nav className="flex flex-col sm:flex-row  flex-wrap  w-[400px] sm:w-full sm:justify-between sm:items-center text-sm">
         {menu.map((page, index) => (
           //   page
           <motion.div
@@ -86,7 +87,7 @@ export default function Header() {
             {isPageActive(activePage, page.link) && (
               <motion.div
                 transition={{ duration: 4 }}
-                className={"flex flex-wrap justify-end gap-2 "}
+                className={"flex flex-wrap justify-end gap-2 min-w-[200px]"}
               >
                 {page.sections.map((section, index) => (
                   //section

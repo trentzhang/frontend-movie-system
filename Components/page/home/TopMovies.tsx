@@ -11,7 +11,7 @@ interface TopMoviesProps {
 export default function TopMovies({ movies }: TopMoviesProps) {
   return (
     <section
-      className="flex flex-col items-center justify-center w-screen h-full  text-white scroll-mt-28 "
+      className="flex flex-col items-center justify-center w-full h-full  text-white scroll-mt-28 "
       id="topMovies"
     >
       <SectionTitle>Top Movies</SectionTitle>

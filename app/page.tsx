@@ -1,8 +1,8 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
-import TopMovies from "@/Components/TopMovies";
-import RandomMovies from "@/Components/RandomMovies";
-import TopLists from "@/Components/TopLists";
+import TopMovies from "@/Components/page/home/TopMovies";
+import RandomMovies from "@/Components/page/home/RandomMovies";
+import TopLists from "@/Components/page/home/TopLists";
 
 async function getData() {
   const res = await fetch(`${process.env.backendUrl}/homepage/`);
@@ -21,7 +21,7 @@ export default async function Home() {
   const { moviesRandom, moviesSortedByRating, lists } = data.data;
   //   console.log("moviesSortedByRating", moviesSortedByRating);
   return (
-    <main className=" ">
+    <main className="">
       <TopMovies movies={moviesSortedByRating} />
       <RandomMovies movies={moviesRandom} />
       <TopLists lists={lists} />

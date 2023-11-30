@@ -14,6 +14,12 @@ const nextConfig = {
         port: "",
         pathname: "/**/*.{jpg,jpeg,png,webp}",
       },
+      {
+        protocol: "https",
+        hostname: "www.w3schools.com",
+        port: "",
+        pathname: "/**/*.{jpg,jpeg,png,webp}",
+      },
     ],
   },
 };

@@ -6,14 +6,10 @@ import "react-multi-carousel/lib/styles.css";
 import { coverURL } from "@/lib/utils";
 import SectionTitle from "./SectionTitle";
 
-interface TopListsProps {
-  lists: Movie[];
-}
-
-export default function TopLists({ lists }: TopListsProps) {
+export default function TopLists({ lists }: { lists: Movie[] }) {
   return (
     <section
-      className="flex flex-col items-center justify-center w-screen h-full  text-white scroll-mt-28"
+      className="flex flex-col items-center justify-center  h-full  text-white scroll-mt-28"
       id="topLists"
     >
       <SectionTitle>Top Lists</SectionTitle>

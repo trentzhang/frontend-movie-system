@@ -1,7 +1,7 @@
 // import React, { useEffect, useState } from "react";
 // import { Col, Container, Image, Row, Stack } from "react-bootstrap";
-import { auth } from "@/Components/Firebase";
-import MovieDetailCard from "@/Components/MovieDetailCard";
+import { auth } from "@/Components/shared/Firebase";
+import MovieDetailCard from "@/Components/page/movie/MovieDetailCard";
 import { getData } from "@/lib/dataFetchers";
 import Image from "next/image";
 // import { ListCardGroup } from "../Home/body/ListCardGroup";
@@ -16,7 +16,7 @@ async function MoviePage({ params }: { params: { id: string } }) {
   const movieData = await getData(
     `${process.env.backendUrl}/movies/${params.id}`
   );
-  console.log("movieData", movieData);
+
   return <MovieDetailCard data={movieData}></MovieDetailCard>;
 }
 

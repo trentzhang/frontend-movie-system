@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import Header from "../Components/Header";
+import Header from "../Components/shared/Header";
 import { Providers } from "@/provider/PageTrasitionProvider";
+import { useEffect } from "react";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -19,12 +20,11 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className="!scroll-smooth min-h-screen pt-24  flex  flex-col items-center justify-between bg-black"
+      className="!scroll-smooth min-h-screen pt-24  flex  flex-col items-center justify-between bg-black/90 text-white overflow-x-hidden"
     >
       <body
         className={
-          inter.className +
-          "flex  flex-col items-center justify-between bg-black/50 text-white"
+          inter.className + "flex  flex-col items-center justify-between"
         }
       >
         <Header />

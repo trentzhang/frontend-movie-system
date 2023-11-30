@@ -34,13 +34,13 @@ export function Providers({ children }: { children: React.ReactNode }) {
         // animate={inTheCenter}
         // exit={onTheLeft}
         // transition={transition}
-        initial={{ x: 200, opacity: 0 }}
-        animate={{ x: 0, opacity: 1 }}
-        exit={{ x: 200, opacity: 0 }}
+        initial={{ y: "10%", opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        exit={{ y: "10%", opacity: 0 }}
         transition={{
           type: "spring",
-          stiffness: 260,
-          damping: 20,
+          stiffness: 400,
+          damping: 25,
         }}
       >
         <FrozenRouter>{children}</FrozenRouter>
