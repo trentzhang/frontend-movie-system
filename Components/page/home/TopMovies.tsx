@@ -1,8 +1,8 @@
 "use client";
 import { MovieCard } from "./MovieCard";
+import SectionTitle from "./SectionTitle";
 // import Carousel from "react-multi-carousel";
 // import "react-multi-carousel/lib/styles.css";
-import SectionTitle from "./SectionTitle";
 
 interface TopMoviesProps {
   movies: Movie[];

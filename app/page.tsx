@@ -1,8 +1,8 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
-import TopMovies from "@/Components/page/home/TopMovies";
-import RandomMovies from "@/Components/page/home/RandomMovies";
-import TopLists from "@/Components/page/home/TopLists";
+import TopMovies from "@/components/page/home/TopMovies";
+import RandomMovies from "@/components/page/home/RandomMovies";
+import TopLists from "@/components/page/home/TopLists";
 
 async function getData() {
   const res = await fetch(`${process.env.backendUrl}/homepage/`);
