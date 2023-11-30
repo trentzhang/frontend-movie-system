@@ -97,13 +97,15 @@ export default function Header() {
                     href={page.link + section.link}
                     key={index}
                     onClick={() => {
-                      setActiveSection(section.id);
-                      console.log("section.id", section.id);
+                      if ("id" in section) {
+                        setActiveSection(section.id);
+                        console.log("section.id", section.id);
+                      }
                     }}
                   >
                     <motion.span
                       className={
-                        activeSection === section.link
+                        "id" in section && activeSection === section.id
                           ? ""
                           : "text-white/50 hover:text-white transition duration-[0.45s]"
                       }
@@ -111,7 +113,7 @@ export default function Header() {
                       {section.name}
                     </motion.span>
                     {/* underline */}
-                    {activeSection === section.id && (
+                    {"id" in section && activeSection === section.id && (
                       <motion.div
                         layoutId="underline"
                         className="border-b-2 border-white w-full"
