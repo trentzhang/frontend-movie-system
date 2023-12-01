@@ -106,9 +106,17 @@ export default function Search() {
             </motion.div>
             <SearchResult movies={searchResults} />
             <Pagination
+              showControls
               total={10}
               initialPage={1}
-              onChange={setSearchResultPage}
+              onChange={(page) => setSearchResultPage(page - 1)}
+              classNames={{
+                wrapper:
+                  "gap-0 overflow-visible h-8 rounded border border-divider",
+                item: "mx-1 ",
+                cursor:
+                  "bg-gradient-to-b from-slate-500 to-default-800  shadow-lg  text-white font-bold",
+              }}
             />
           </motion.div>
         </searchTextContext.Provider>
