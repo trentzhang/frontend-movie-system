@@ -5,12 +5,12 @@ import { useActiveSectionContext } from "@/context/active-section-context";
 import { Underline } from "./Underline";
 import { MenuItemProps } from "./MenuItem";
 
-export function Section({
+export function MenuSubItem({
   hrefLink,
   section,
 }: {
   hrefLink: string;
-  section: MenuItemProps["page"]["sections"][0];
+  section: MenuItemProps["page"]["subItems"][0];
 }) {
   const { activeSection, setActiveSection } = useActiveSectionContext();
 

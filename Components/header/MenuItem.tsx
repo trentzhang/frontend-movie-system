@@ -2,7 +2,7 @@
 import React from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { Section } from "./Section";
+import { MenuSubItem } from "./MenuSubItem";
 
 function isPageActive(pathname: string, link: string) {
   if (link === "/user/id") return pathname.startsWith("/user");
@@ -13,7 +13,7 @@ export type MenuItemProps = {
   page: {
     name: string;
     link: string;
-    sections: {
+    subItems: {
       name: string;
       link: string;
       id?: string;
@@ -61,11 +61,11 @@ function MenuItem({
           transition={{ duration: 4 }}
           className={"flex flex-wrap justify-end gap-2 min-w-[200px]"}
         >
-          {page.sections.map((section, index) => (
-            <Section
+          {page.subItems.map((subItem, index) => (
+            <MenuSubItem
               key={index}
-              hrefLink={page.link + section.link}
-              section={section}
+              hrefLink={page.link + subItem.link}
+              section={subItem}
             />
           ))}
         </motion.div>

@@ -4,7 +4,7 @@ export const menu = [
   {
     name: "Home",
     link: "/",
-    sections: [
+    subItems: [
       { name: "Top Movies", link: "#topMovies", id: "topMovies" },
       { name: "Random Movies", link: "#randomMovies", id: "randomMovies" },
       { name: "Top Lists", link: "#topLists", id: "topLists" },
@@ -13,7 +13,7 @@ export const menu = [
   {
     name: "Search",
     link: "/search",
-    sections: [
+    subItems: [
       { name: "Movie", link: "" },
       { name: "List", link: "" },
     ],
@@ -21,7 +21,7 @@ export const menu = [
   {
     name: "Me",
     link: "/user/id",
-    sections: [
+    subItems: [
       { name: "Log in", link: "/user/login" },
       { name: "Profile", link: "/user/profile" },
       { name: "Log out", link: "/user/logout" },
