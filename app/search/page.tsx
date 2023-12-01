@@ -56,9 +56,11 @@ export default function Search() {
   }, [searchText, searchLanguage, searchType]);
 
   return (
-    <searchLanguageContext.Provider value={[searchLanguage, setSearchLanguage]}>
-      <searchTypeContext.Provider value={[searchType, setSearchType]}>
-        <searchTextContext.Provider value={[searchText, setSearchText]}>
+    <searchLanguageContext.Provider
+      value={{ searchLanguage, setSearchLanguage }}
+    >
+      <searchTypeContext.Provider value={{ searchType, setSearchType }}>
+        <searchTextContext.Provider value={{ searchText, setSearchText }}>
           <div className="flex flex-col items-center justify-center gap-4">
             <div className="w-[70vw] max-w-[700px] h-[240px] px-8 rounded-2xl flex flex-col gap-3 justify-center items-center bg-gradient-to-tr from-slate-700 to-gray-700 text-white shadow-lg">
               <div className="flex w-full items-center justify-center gap-3">

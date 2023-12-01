@@ -1,9 +1,28 @@
 import { createContext } from "react";
 
-type SearchDataType = [string, React.Dispatch<React.SetStateAction<string>>];
+type searchLanguageContextType = {
+  searchLanguage: string;
+  setSearchLanguage: React.Dispatch<React.SetStateAction<string>>;
+};
 
-export const searchLanguageContext = createContext<SearchDataType | null>(null);
+export const searchLanguageContext = createContext<searchLanguageContextType>(
+  {} as searchLanguageContextType
+);
 
-export const searchTypeContext = createContext<SearchDataType | null>(null);
+type searchTypeContextType = {
+  searchType: string;
+  setSearchType: React.Dispatch<React.SetStateAction<string>>;
+};
 
-export const searchTextContext = createContext<SearchDataType | null>(null);
+export const searchTypeContext = createContext<searchTypeContextType>(
+  {} as searchTypeContextType
+);
+
+type searchTextType = {
+  searchText: string;
+  setSearchText: React.Dispatch<React.SetStateAction<string>>;
+};
+
+export const searchTextContext = createContext<searchTextType>(
+  {} as searchTextType
+);

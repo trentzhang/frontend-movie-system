@@ -3,7 +3,7 @@ import {
   searchTypeContext,
 } from "@/context/search-context";
 import { Select, SelectItem } from "@nextui-org/react";
-import { useContext, useState } from "react";
+import React, { useContext, useState } from "react";
 
 const movieLanguages = [
   "English",
@@ -27,12 +27,11 @@ const movieTypes = [
 type MySelectProps = {
   label: string;
   items: string[];
-  Context: React.Context<any>;
+  //   Context: React.Context<any>;
+  setValue: React.Dispatch<React.SetStateAction<string>>;
 };
 
-function MySelect({ label, items, Context }: MySelectProps) {
-  const [value, setValue] = useContext(Context);
-
+function MySelect({ label, items, setValue }: MySelectProps) {
   return (
     <Select
       label={"Select a " + label}
@@ -42,7 +41,9 @@ function MySelect({ label, items, Context }: MySelectProps) {
         listbox: ["text-black/90"],
         selectorIcon: ["text-black/50"],
       }}
-      onSelectionChange={setValue}
+      onSelectionChange={(valuesSet) => {
+        setValue(Array.from(valuesSet).join(", "));
+      }}
     >
       {items.map((item) => (
         <SelectItem key={item} value={item}>
@@ -54,14 +55,16 @@ function MySelect({ label, items, Context }: MySelectProps) {
 }
 
 export default function SearchFilterCheck() {
+  const { setSearchLanguage } = useContext(searchLanguageContext);
+  const { setSearchType } = useContext(searchTypeContext);
   return (
     <div className="flex w-full flex-wrap md:flex-nowrap gap-4 ">
       <MySelect
         label="language"
         items={movieLanguages}
-        Context={searchLanguageContext}
+        setValue={setSearchLanguage}
       />
-      <MySelect label="type" items={movieTypes} Context={searchTypeContext} />
+      <MySelect label="type" items={movieTypes} setValue={setSearchType} />
     </div>
   );
 }

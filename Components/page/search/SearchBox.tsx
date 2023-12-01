@@ -4,7 +4,7 @@ import React, { useContext } from "react";
 import { searchTextContext } from "@/context/search-context";
 
 export default function SearchBox() {
-  const [searchText, setSearchText] = useContext<any>(searchTextContext);
+  const { searchText, setSearchText } = useContext(searchTextContext);
   return (
     <Input
       onValueChange={setSearchText}
