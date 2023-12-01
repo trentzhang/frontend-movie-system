@@ -3,9 +3,8 @@ import { getData } from "@/lib/dataFetchers";
 
 async function MoviePage({ params }: { params: { id: string } }) {
   const movieData: MovieAPI = await getData(
-    `${process.env.backendUrl}/movies/${params.id}`
+    `${process.env.NEXT_PUBLIC_BACKEND_URL}/movies/${params.id}`
   );
-
   return <MovieDetailCard data={movieData}></MovieDetailCard>;
 }
 

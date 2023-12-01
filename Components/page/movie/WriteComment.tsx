@@ -24,7 +24,7 @@ export default function WriteComment() {
       };
 
       await fetch(
-        `${process.env.backendUrl}/movie/comment/${movie_Id}`,
+        `${process.env.NEXT_PUBLIC_BACKEND_URL}/movie/comment/${movie_Id}`,
         request
       );
 

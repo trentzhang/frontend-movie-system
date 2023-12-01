@@ -4,6 +4,7 @@ import "./globals.css";
 import Header from "../Components/shared/Header";
 import PageTransitionProvider from "@/provider/PageTrasitionProvider";
 import ActiveSectionContextProvider from "@/context/active-section-context";
+import { NextUINextJSProvider } from "@/provider/NextUINextJSProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -27,11 +28,13 @@ export default function RootLayout({
           inter.className + "flex  flex-col items-center justify-between"
         }
       >
-        <ActiveSectionContextProvider>
-          <Header />
-          <PageTransitionProvider>{children}</PageTransitionProvider>
-          {/* <Footer /> */}
-        </ActiveSectionContextProvider>
+        <NextUINextJSProvider>
+          <ActiveSectionContextProvider>
+            <Header />
+            <PageTransitionProvider>{children}</PageTransitionProvider>
+            {/* <Footer /> */}
+          </ActiveSectionContextProvider>
+        </NextUINextJSProvider>
       </body>
     </html>
   );
