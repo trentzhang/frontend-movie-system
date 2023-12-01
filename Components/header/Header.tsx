@@ -7,6 +7,7 @@ import Logo from "./Logo";
 import MenuItem from "./MenuItem";
 import { activePageContext } from "@/context/active-page-context";
 import debounce from "lodash/debounce";
+import { auth } from "../shared/auth/Firebase";
 
 const menu = {
   home: {
@@ -32,10 +33,9 @@ const menu = {
     subItems: [{ name: "Sign up", link: "/signup" }],
   },
   loggedIn: {
-    name: "Me",
+    name: "My Home",
     link: "/user/id",
     subItems: [
-      { name: "Profile", link: "/user/profile" },
       { name: "Log out", link: "/user/logout" },
       { name: "Settings", link: "/user/settings" },
     ],
@@ -51,6 +51,15 @@ export default function Header() {
     setActivePage(newActivePage);
   }, 900);
 
+  const loggedIn = {
+    name: "My Home",
+    link: "/user/" + auth.currentUser?.email,
+    subItems: [
+      { name: "Log out", link: "/logout" },
+      { name: "Settings", link: "/settings" },
+    ],
+  };
+
   return (
     <motion.div className="w-full sm:w-[40em] h-24 sm:h-min z-[1000] fixed top-0 sm:top-4 left-1/2 -translate-x-1/2 px-4  bg-slate-600/30 backdrop-blur-md sm:rounded-full flex items-center justify-between gap-3  sm:border-slate-600 sm:border-1">
       <Logo />
@@ -60,7 +69,11 @@ export default function Header() {
         <motion.nav className="flex flex-col sm:flex-row  flex-wrap  w-[400px] sm:w-full sm:justify-between sm:items-center text-sm">
           <MenuItem page={menu.home} />
           <MenuItem page={menu.search} />
-          <MenuItem page={menu.notLogIn} />
+          {auth.currentUser ? (
+            <MenuItem page={loggedIn} />
+          ) : (
+            <MenuItem page={menu.notLogIn} />
+          )}
         </motion.nav>
       </activePageContext.Provider>
     </motion.div>

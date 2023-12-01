@@ -76,7 +76,7 @@ export default function Search() {
         value={{ searchMovieType, setSearchMovieType }}
       >
         <searchTextContext.Provider value={{ searchText, setSearchText }}>
-          <motion.div className="min-w-[70vw] min-h-[20vh]  p-8 rounded-2xl flex flex-col gap-3  items-center bg-gradient-to-tr from-slate-700 to-gray-700 text-white shadow-lg">
+          <motion.div className="min-w-[70vw] min-h-[20vh]  p-8 rounded-2xl flex flex-col gap-3  items-center bg-slate-600/30 text-white shadow-lg">
             <motion.div className="flex w-full items-center justify-center gap-3">
               <SearchBox />
               <Button
