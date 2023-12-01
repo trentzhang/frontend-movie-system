@@ -23,6 +23,17 @@ export type MenuItemProps = {
   };
 };
 
+//debounce setActivePage(page.link) to prevent flickering
+function debounce(func: Function, timeout: number = 300): Function {
+  let timer: NodeJS.Timeout;
+  return (...args: any[]) => {
+    clearTimeout(timer);
+    timer = setTimeout(() => {
+      func.apply(this, args);
+    }, timeout);
+  };
+}
+
 function MenuItem({ page }: MenuItemProps) {
   const pathname = usePathname();
   const { activePage, setActivePage } = useContext(activePageContext);
@@ -34,12 +45,16 @@ function MenuItem({ page }: MenuItemProps) {
         type: "spring",
         stiffness: 320,
         damping: 30,
+        delay: 1,
       }}
       className={`px-2 py-1 min-w-[100px] sm:px-4 sm:py-2  rounded-full flex gap-3 ${
         isPageActive(activePage, page.link)
           ? "bg-slate-300/50 "
           : "text-white/50"
       }`}
+      //   onHoverEnd={() => {
+      //     setActivePage(pathname);
+      //   }}
       onHoverStart={() => {
         setActivePage(page.link);
       }}
@@ -55,6 +70,7 @@ function MenuItem({ page }: MenuItemProps) {
       </motion.div>
       {isPageActive(activePage, page.link) && (
         <motion.div
+          //   layout
           transition={{ duration: 4 }}
           className={"flex flex-wrap justify-end gap-2 min-w-[200px]"}
         >

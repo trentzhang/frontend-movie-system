@@ -5,8 +5,41 @@ import { usePathname } from "next/navigation";
 import { useState } from "react";
 import Logo from "./Logo";
 import MenuItem from "./MenuItem";
-import { menu } from "./menu";
 import { activePageContext } from "@/context/active-page-context";
+
+const menu = {
+  home: {
+    name: "Home",
+    link: "/",
+    subItems: [
+      { name: "Top Movies", link: "#topMovies", id: "topMovies" },
+      { name: "Random Movies", link: "#randomMovies", id: "randomMovies" },
+      { name: "Top Lists", link: "#topLists", id: "topLists" },
+    ],
+  },
+  search: {
+    name: "Search",
+    link: "/search",
+    subItems: [
+      { name: "Movie", link: "" },
+      { name: "List", link: "" },
+    ],
+  },
+  notLogIn: {
+    name: "Log in",
+    link: "",
+    subItems: [{ name: "Sign up", link: "/user/signup" }],
+  },
+  loggedIn: {
+    name: "Me",
+    link: "/user/id",
+    subItems: [
+      { name: "Profile", link: "/user/profile" },
+      { name: "Log out", link: "/user/logout" },
+      { name: "Settings", link: "/user/settings" },
+    ],
+  },
+};
 
 export default function Header() {
   const pathname = usePathname();
@@ -17,9 +50,9 @@ export default function Header() {
       <Logo />
       <activePageContext.Provider value={{ activePage, setActivePage }}>
         <motion.nav className="flex flex-col sm:flex-row  flex-wrap  w-[400px] sm:w-full sm:justify-between sm:items-center text-sm">
-          {menu.map((page, index) => (
-            <MenuItem key={index} page={page} />
-          ))}
+          <MenuItem page={menu.home} />
+          <MenuItem page={menu.search} />
+          <MenuItem page={menu.notLogIn} />
         </motion.nav>
       </activePageContext.Provider>
     </motion.div>
