@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import Header from "../Components/shared/Header";
+// import Header from "../Components/shared/Header";
+import Header from "@/Components/header/Header";
 import PageTransitionProvider from "@/provider/PageTrasitionProvider";
 import ActiveSectionContextProvider from "@/context/active-section-context";
 import { NextUINextJSProvider } from "@/provider/NextUINextJSProvider";

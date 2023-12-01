@@ -1,10 +1,10 @@
 "use client";
 import Link from "next/link";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 
-import { AnimatePresence, motion } from "framer-motion";
-import { useState } from "react";
 import { useActiveSectionContext } from "@/context/active-section-context";
+import { motion } from "framer-motion";
+import { useState } from "react";
 
 const menu = [
   {
