@@ -23,13 +23,13 @@ const menu = {
     link: "/search",
     subItems: [
       { name: "Movie", link: "" },
-      { name: "List", link: "" },
+      //   { name: "List", link: "" },
     ],
   },
   notLogIn: {
     name: "Log in",
-    link: "",
-    subItems: [{ name: "Sign up", link: "/user/signup" }],
+    link: "/login",
+    subItems: [{ name: "Sign up", link: "/signup" }],
   },
   loggedIn: {
     name: "Me",
