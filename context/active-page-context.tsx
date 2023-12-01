@@ -4,6 +4,7 @@ import { createContext } from "react";
 type activePageContextType = {
   activePage: string;
   setActivePage: React.Dispatch<React.SetStateAction<string>>;
+  debouncedSetActivePage: React.Dispatch<React.SetStateAction<string>>;
 };
 
 export const activePageContext = createContext<activePageContextType>(

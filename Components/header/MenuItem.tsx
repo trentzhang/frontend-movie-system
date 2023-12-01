@@ -25,7 +25,8 @@ export type MenuItemProps = {
 
 function MenuItem({ page }: MenuItemProps) {
   const pathname = usePathname();
-  const { activePage, setActivePage } = useContext(activePageContext);
+  const { activePage, setActivePage, debouncedSetActivePage } =
+    useContext(activePageContext);
 
   return (
     <motion.div
@@ -42,7 +43,8 @@ function MenuItem({ page }: MenuItemProps) {
       //     setActivePage(pathname);
       //   }}
       onHoverStart={() => {
-        setActivePage(page.link);
+        debouncedSetActivePage(page.link);
+        // setActivePage(page.link);
       }}
     >
       <motion.div layout>
