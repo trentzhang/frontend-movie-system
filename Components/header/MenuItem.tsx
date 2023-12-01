@@ -36,9 +36,7 @@ function MenuItem({ page }: MenuItemProps) {
         damping: 30,
       }}
       className={`px-2 py-1 min-w-[100px] sm:px-4 sm:py-2  rounded-full flex gap-3 ${
-        isPageActive(activePage, page.link)
-          ? "bg-slate-300/50 "
-          : "text-white/50"
+        isPageActive(activePage, page.link) ? "bg-slate-300/50 " : ""
       }`}
       //   onHoverEnd={() => {
       //     setActivePage(pathname);
@@ -50,7 +48,9 @@ function MenuItem({ page }: MenuItemProps) {
       <motion.div layout>
         <Link href={page.link}>
           <span
-            className={isPageActive(pathname, page.link) ? "" : "text-white/50"}
+            className={
+              isPageActive(pathname, page.link) ? "text-white" : "text-white/50"
+            }
           >
             {page.name}
           </span>
