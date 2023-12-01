@@ -68,20 +68,6 @@ export default function Search() {
     fetchData,
   ]);
 
-  // Attach the scroll event listener to the window object, reach the bottom of the page, and load more data, page + 1
-  //   useEffect(() => {
-  //     const handleScroll = () => {
-  //       if (
-  //         window.innerHeight + document.documentElement.scrollTop ===
-  //         document.documentElement.offsetHeight
-  //       ) {
-  //         setSearchResultPage((searchResultPage) => searchResultPage + 1);
-  //       }
-  //     };
-  //     window.addEventListener("scroll", handleScroll);
-  //     return () => window.removeEventListener("scroll", handleScroll);
-  //   }, [handleSearch]);
-
   return (
     <searchLanguageContext.Provider
       value={{ searchLanguage, setSearchLanguage }}

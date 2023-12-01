@@ -17,11 +17,7 @@ function FrozenRouter({ children }: { children: React.ReactNode }) {
 
 export default function Providers({ children }: { children: React.ReactNode }) {
   return (
-    <AnimatePresence
-      mode="wait"
-      initial={false}
-      onExitComplete={() => window.scrollTo(0, 0)}
-    >
+    <AnimatePresence mode="wait" initial={false}>
       <motion.div
         key={usePathname()}
         initial={{ y: "10%", opacity: 0 }}

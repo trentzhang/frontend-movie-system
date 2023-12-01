@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { MenuSubItem } from "./MenuSubItem";
 import { usePathname } from "next/navigation";
 import { activePageContext } from "@/context/active-page-context";
+import { useActiveSectionContext } from "@/context/active-section-context";
 
 function isPageActive(pathname: string, link: string) {
   if (link === "/user/id") return pathname.startsWith("/user");
@@ -27,6 +28,7 @@ function MenuItem({ page }: MenuItemProps) {
   const pathname = usePathname();
   const { activePage, setActivePage, debouncedSetActivePage } =
     useContext(activePageContext);
+  const { activeSection, setActiveSection } = useActiveSectionContext();
 
   return (
     <motion.div
@@ -48,7 +50,12 @@ function MenuItem({ page }: MenuItemProps) {
       }}
     >
       <motion.div layout>
-        <Link href={page.link}>
+        <Link
+          href={page.link}
+          onClick={() => {
+            setActiveSection("");
+          }}
+        >
           <span
             className={
               isPageActive(pathname, page.link) ? "text-white" : "text-white/50"

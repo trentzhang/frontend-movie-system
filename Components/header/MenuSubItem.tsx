@@ -18,10 +18,7 @@ export function MenuSubItem({
     <Link
       href={hrefLink}
       onClick={() => {
-        if ("id" in section) {
-          setActiveSection(section.id ?? "");
-          console.log("section.id", section.id);
-        }
+        setActiveSection(section.id ?? "");
       }}
     >
       <motion.span
