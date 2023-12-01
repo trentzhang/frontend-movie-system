@@ -35,7 +35,6 @@ function MySelect({ label, items, setValue }: MySelectProps) {
   return (
     <Select
       label={"Select a " + label}
-      className="max-w-xs "
       classNames={{
         trigger: ["shadow-xl", "backdrop-blur-xl", "backdrop-saturate-200"],
         listbox: ["text-black/90"],
@@ -56,15 +55,15 @@ function MySelect({ label, items, setValue }: MySelectProps) {
 
 export default function SearchFilterCheck() {
   const { setSearchLanguage } = useContext(searchLanguageContext);
-  const { setSearchType } = useContext(searchTypeContext);
+  const { setSearchMovieType } = useContext(searchTypeContext);
   return (
-    <div className="flex w-full flex-wrap md:flex-nowrap gap-4 ">
+    <div className="flex w-full flex-wrap md:flex-nowrap gap-4 justify-center">
       <MySelect
         label="language"
         items={movieLanguages}
         setValue={setSearchLanguage}
       />
-      <MySelect label="type" items={movieTypes} setValue={setSearchType} />
+      <MySelect label="type" items={movieTypes} setValue={setSearchMovieType} />
     </div>
   );
 }

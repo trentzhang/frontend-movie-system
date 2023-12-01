@@ -9,13 +9,13 @@ export const searchLanguageContext = createContext<searchLanguageContextType>(
   {} as searchLanguageContextType
 );
 
-type searchTypeContextType = {
-  searchType: string;
-  setSearchType: React.Dispatch<React.SetStateAction<string>>;
+type searchMovieTypeContextType = {
+  searchMovieType: string;
+  setSearchMovieType: React.Dispatch<React.SetStateAction<string>>;
 };
 
-export const searchTypeContext = createContext<searchTypeContextType>(
-  {} as searchTypeContextType
+export const searchTypeContext = createContext<searchMovieTypeContextType>(
+  {} as searchMovieTypeContextType
 );
 
 type searchTextType = {
