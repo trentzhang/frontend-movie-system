@@ -22,9 +22,10 @@ export type MenuItemProps = {
       id?: string;
     }[];
   };
+  className?: string;
 };
 
-function MenuItem({ page }: MenuItemProps) {
+function MenuItem({ page, className }: MenuItemProps) {
   const pathname = usePathname();
   const { activePage, setActivePage, debouncedSetActivePage } =
     useContext(activePageContext);
@@ -38,9 +39,13 @@ function MenuItem({ page }: MenuItemProps) {
         stiffness: 320,
         damping: 30,
       }}
-      className={`px-2 py-1 min-w-[100px] sm:px-4 sm:py-2  rounded-full flex gap-3 ${
+      className={`${className} px-2 py-1  sm:px-4 sm:py-2  rounded-full flex  transition-[color] ${
         isPageActive(activePage, page.link) ? "bg-slate-300/50 " : ""
-      }`}
+      }
+      `}
+      //   className={`px-2 py-1  sm:px-4 sm:py-2  rounded-full flex
+      //   ${isPageActive(activePage, page.link) ? "bg-slate-300/50 " : ""}
+      //   `}
       onHoverEnd={() => {
         debouncedSetActivePage(pathname);
       }}
@@ -64,11 +69,11 @@ function MenuItem({ page }: MenuItemProps) {
           </span>
         </Link>
       </motion.div>
-      {isPageActive(activePage, page.link) && (
+      {isPageActive(activePage, page.link) && page.subItems[0] && (
         <motion.div
           //   layout
           transition={{ duration: 4 }}
-          className={"flex flex-wrap justify-end gap-2 min-w-[200px]"}
+          className={"ml-6 flex flex-wrap justify-end gap-2 "}
         >
           {page.subItems.map((subItem, index) => (
             <MenuSubItem

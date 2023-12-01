@@ -1,9 +1,10 @@
 "use client";
 import { auth } from "@/Components/shared/auth/Firebase";
-import { redirect } from "next/navigation";
+import { redirect, useRouter } from "next/navigation";
 
-export default function logout() {
+export default function Logout() {
+  const router = useRouter();
   auth.signOut();
-  console.log("auth.currentUser", auth.currentUser);
-  redirect("/");
+  router.push("/");
+  return null;
 }
