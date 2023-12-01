@@ -1,8 +1,10 @@
 // MenuItem.jsx
-import React from "react";
+import React, { use, useContext } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { MenuSubItem } from "./MenuSubItem";
+import { usePathname } from "next/navigation";
+import { activePageContext } from "@/context/active-page-context";
 
 function isPageActive(pathname: string, link: string) {
   if (link === "/user/id") return pathname.startsWith("/user");
@@ -19,17 +21,12 @@ export type MenuItemProps = {
       id?: string;
     }[];
   };
-  activePage: string;
-  pathname: string;
-  setActivePage: React.Dispatch<React.SetStateAction<string>>;
 };
 
-function MenuItem({
-  page,
-  activePage,
-  pathname,
-  setActivePage,
-}: MenuItemProps) {
+function MenuItem({ page }: MenuItemProps) {
+  const pathname = usePathname();
+  const { activePage, setActivePage } = useContext(activePageContext);
+
   return (
     <motion.div
       layout
