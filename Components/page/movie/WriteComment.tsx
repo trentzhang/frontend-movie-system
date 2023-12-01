@@ -1,4 +1,4 @@
-import { auth } from "@/Components/shared/Firebase";
+import { auth } from "@/Components/shared/auth/Firebase";
 import { Button, Divider, Input, Textarea } from "@nextui-org/react";
 import { useParams } from "next/navigation";
 import { useState } from "react";

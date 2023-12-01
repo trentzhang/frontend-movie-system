@@ -20,8 +20,8 @@ const menu = [
     name: "Search",
     link: "/search",
     sections: [
-      { name: "Movie", link: "#movie" },
-      { name: "List", link: "#list" },
+      { name: "Movie", link: "" },
+      { name: "List", link: "" },
     ],
   },
   {
@@ -41,7 +41,14 @@ function isPageActive(pathname: string, link: string) {
   if (link === "/user/id") return pathname.startsWith("/user");
   else return pathname === link;
 }
-
+// Logo component
+function Logo() {
+  return (
+    <span className="  sm:px-4 sm:py-2  text-2xl font-bold">
+      <Link href={"/"}>🎥</Link>
+    </span>
+  );
+}
 export default function Header() {
   const pathname = usePathname();
   const [activePage, setActivePage] = useState(pathname);
@@ -50,9 +57,7 @@ export default function Header() {
 
   return (
     <motion.div className="w-full sm:w-[40em] h-24 sm:h-min z-[1000] fixed top-0 sm:top-4 left-1/2 -translate-x-1/2 px-4  bg-slate-600/30 backdrop-blur-md sm:rounded-full flex items-center justify-between gap-3  sm:border-slate-600 sm:border-1">
-      <span className="  sm:px-4 sm:py-2  text-2xl font-bold">
-        <Link href={"/"}>🎥</Link>
-      </span>
+      <Logo />
 
       <motion.nav className="flex flex-col sm:flex-row  flex-wrap  w-[400px] sm:w-full sm:justify-between sm:items-center text-sm">
         {menu.map((page, index) => (

@@ -16,12 +16,6 @@ function FrozenRouter({ children }: { children: React.ReactNode }) {
 }
 
 export default function Providers({ children }: { children: React.ReactNode }) {
-  const onTheRight = { x: "100%" };
-  const inTheCenter = { x: 0 };
-  const onTheLeft = { x: "-100%" };
-
-  const transition = { duration: 0.4, ease: "easeInOut" };
-
   return (
     <AnimatePresence
       mode="wait"
@@ -30,21 +24,17 @@ export default function Providers({ children }: { children: React.ReactNode }) {
     >
       <motion.div
         key={usePathname()}
-        // initial={onTheRight}
-        // animate={inTheCenter}
-        // exit={onTheLeft}
-        // transition={transition}
-        // initial={{ y: "10%", opacity: 0 }}
-        // animate={{ y: 0, opacity: 1 }}
-        // exit={{ y: "10%", opacity: 0 }}
-        // transition={{
-        //   type: "spring",
-        //   stiffness: 400,
-        //   damping: 25,
-        // }}
+        initial={{ y: "10%", opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        exit={{ y: "10%", opacity: 0 }}
+        transition={{
+          type: "spring",
+          stiffness: 400,
+          damping: 25,
+        }}
       >
-        {/* <FrozenRouter>{children}</FrozenRouter> */}
-        {children}
+        <FrozenRouter>{children}</FrozenRouter>
+        {/* {children} */}
       </motion.div>
     </AnimatePresence>
   );
