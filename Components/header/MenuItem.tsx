@@ -41,12 +41,11 @@ function MenuItem({ page }: MenuItemProps) {
       className={`px-2 py-1 min-w-[100px] sm:px-4 sm:py-2  rounded-full flex gap-3 ${
         isPageActive(activePage, page.link) ? "bg-slate-300/50 " : ""
       }`}
-      //   onHoverEnd={() => {
-      //     setActivePage(pathname);
-      //   }}
+      onHoverEnd={() => {
+        debouncedSetActivePage(pathname);
+      }}
       onHoverStart={() => {
         debouncedSetActivePage(page.link);
-        // setActivePage(page.link);
       }}
     >
       <motion.div layout>
