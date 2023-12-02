@@ -111,8 +111,12 @@ export function LikeButton() {
     }
   }, [user, setLike]);
   return (
-    <Button color="danger" aria-label="Like" onClick={handleLike}>
-      {/* <HeartIcon /> */}
+    <Button
+      color="danger"
+      aria-label="Like"
+      onClick={handleLike}
+      className="w-[110px]"
+    >
       {Like ? (
         <>
           <IoMdHeartDislike />
