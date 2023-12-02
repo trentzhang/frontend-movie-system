@@ -45,18 +45,19 @@ export function AddToListButton() {
   }, [selectedKeys]);
 
   return (
-    <Dropdown className="dark">
+    <Dropdown className="bg-white/70 text-gray-700" backdrop="blur">
       <DropdownTrigger>
-        <Button color="warning" variant="faded" aria-label="Save to list">
+        <Button variant="faded" aria-label="Save to list">
           {/* <CameraIcon /> */}
-          {selectedValue ? selectedValue : "Save to list"}
+          {"Save to list"}
         </Button>
       </DropdownTrigger>
       <DropdownMenu
         aria-label="Single selection example"
         variant="flat"
-        selectionMode="single"
+        selectionMode="multiple"
         selectedKeys={selectedKeys}
+        closeOnSelect={false}
         //ts-ignore
         onSelectionChange={(keys) => setSelectedKeys(keys)}
 
