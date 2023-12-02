@@ -18,10 +18,9 @@ export default function Search() {
   const [searchMovieType, setSearchMovieType] = useState("");
   const [searchResultPage, setSearchResultPage] = useState(0);
   const [searchResults, setSearchResults] = useState([]);
-  console.log("searchResultPage", searchResultPage);
+
   const fetchData = useCallback(async () => {
     try {
-      console.log("first");
       const searchCriteria = {
         language: searchLanguage,
         type: searchMovieType,

@@ -29,8 +29,6 @@ const Carousel: React.FC<CarouselProps> = ({
   );
   // items to show on webpage
 
-  console.log("activeItems", activeItems);
-
   return (
     <div className="relative overflow-hidden">
       {activeIndex}

@@ -12,7 +12,6 @@ export const genderDefaultAvater = (gender: string | null) => {
 
 type LikedUsersProps = typeof movieAPI.data.liked_users;
 export function LikedUsers({ liked_users }: { liked_users: LikedUsersProps }) {
-  //   console.log("liked_users :>> ", liked_users);
   return (
     <div className="flex flex-wrap ">
       {liked_users[0]
