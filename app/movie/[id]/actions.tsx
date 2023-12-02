@@ -10,23 +10,23 @@ export async function updateCache(
 ) {
   // Send API to update database when like button is clicked
   try {
-    const request = {
-      method: requestMethod,
-      headers: {
-        "Content-type": "application/json",
-      },
-    };
-
     const res = await fetch(
-      `${process.env.NEXT_PUBLIC_BACKEND_URL}/liked/movies/${email}/${id}`,
-      request
+      `${process.env.BACKEND_URL}/liked/movies/${email}/${id}`,
+      {
+        method: requestMethod,
+        headers: {
+          "Content-type": "application/json",
+        },
+        cache: "no-store",
+      }
     );
     if (!res.ok) {
       throw new Error("Oops! Like Operation API Wrong, Please Try Again!");
     }
+
+    revalidateTag("MoviePage");
   } catch (error) {
     console.log(error);
     alert("Oops! Like Operation API Wrong, Please Try Again!");
   }
-  revalidateTag("MoviePage");
 }
