@@ -6,11 +6,12 @@ import {
   DropdownItem,
   DropdownMenu,
   DropdownTrigger,
+  Selection,
 } from "@nextui-org/react";
 import { useContext, useEffect, useMemo, useState } from "react";
 
 export function AddToListButton() {
-  const [selectedKeys, setSelectedKeys] = useState(new Set(["text"]));
+  const [selectedKeys, setSelectedKeys] = useState(new Set([]) as Selection);
   const selectedValue = useMemo(
     () => Array.from(selectedKeys).join(", ").replaceAll("_", " "),
     [selectedKeys]

@@ -3,7 +3,7 @@ import { getData } from "@/lib/dataFetchers";
 
 async function MoviePage({ params }: { params: { id: string } }) {
   const movieData: MovieAPI = await getData(
-    `${process.env.NEXT_PUBLIC_BACKEND_URL}/movies/${params.id}`,
+    `${process.env.BACKEND_URL}/movies/${params.id}`,
     { next: { tags: ["MoviePage"] } }
   );
   return <MovieDetailCard data={movieData}></MovieDetailCard>;

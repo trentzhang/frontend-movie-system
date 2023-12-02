@@ -23,7 +23,7 @@ export default function MovieDetailCard({ data }: { data: MovieAPI }) {
 
   const [Like, setLike] = useState(false);
   const [user, setUser] = useState<User | null>(null);
-  const [addToLists, setAddToLists] = useState([""]);
+  const [addToLists, setAddToLists] = useState([] as typeof lists);
 
   const [likedNum, setLikedNum] = useState(movieData.liked_num);
   const [liked_users, setLiked_users] = useState(movieData.liked_users);

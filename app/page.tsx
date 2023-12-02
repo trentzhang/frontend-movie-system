@@ -5,7 +5,7 @@ import RandomMovies from "@/Components/page/home/RandomMovies";
 import TopLists from "@/Components/page/home/TopLists";
 
 async function getData() {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/homepage/`);
+  const res = await fetch(`${process.env.BACKEND_URL}/homepage/`);
   //   const res = await fetch("https://api.example.com/...");
 
   if (!res.ok) {

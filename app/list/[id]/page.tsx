@@ -10,7 +10,7 @@ import { use, useContext } from "react";
 
 async function ListPage({ params }: { params: { id: string } }) {
   const listData: ListAPI = await getData(
-    `${process.env.NEXT_PUBLIC_BACKEND_URL}/lists/id/${params.id}`
+    `${process.env.BACKEND_URL}/lists/id/${params.id}`
   );
   return <ListDetailCard data={listData}></ListDetailCard>;
 }
