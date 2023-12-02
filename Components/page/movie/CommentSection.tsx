@@ -1,3 +1,4 @@
+"use client";
 import { Divider } from "@nextui-org/react";
 import Comment from "./Comment";
 import WriteComment from "./WriteComment";

@@ -37,13 +37,7 @@ const Carousel: React.FC<CarouselProps> = ({
           <motion.div
             layout
             key={index}
-            className={`w-full  h-full px-3
-             ${
-               //   isIndexInRange(index, activeIndex, 1, items.length)
-               //     ? "block"
-               //     : "hidden"
-               ""
-             }`}
+            className={`w-full  h-full px-3`}
             // style={{ translateX: `${-activeIndex * 100}%` }}
           >
             {item}

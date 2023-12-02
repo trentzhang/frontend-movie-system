@@ -36,12 +36,6 @@ export default function Search() {
         },
         body: JSON.stringify(searchCriteria),
       };
-
-      // const response = await fetch(
-      //   `${process.env.NEXT_PUBLIC_BACKEND_URL}/search_movie`,
-      //   request
-      // );
-      // const data = await response.json();
       const data = await getData(
         `${process.env.NEXT_PUBLIC_BACKEND_URL}/search_movie`,
         request
