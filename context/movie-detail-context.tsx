@@ -20,9 +20,9 @@ type likedNumContextType = {
 };
 
 type liked_usersContextType = {
-  liked_users: typeof movieAPI.data.liked_users;
+  liked_users: (typeof movieAPI.data.liked_users | User)[];
   setLiked_users: React.Dispatch<
-    React.SetStateAction<typeof movieAPI.data.liked_users>
+    React.SetStateAction<(typeof movieAPI.data.liked_users | User)[]>
   >;
 };
 

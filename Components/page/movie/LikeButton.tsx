@@ -10,6 +10,7 @@ import { User } from "firebase/auth";
 import {
   likeContext,
   likedNumContext,
+  liked_usersContext,
   userContext,
 } from "@/context/movie-detail-context";
 import { revalidatePath, revalidateTag } from "next/cache";
@@ -25,6 +26,7 @@ export function LikeButton() {
   const { Like, setLike } = useContext(likeContext);
   const { user, setUser } = useContext(userContext);
   const { likedNum, setLikedNum } = useContext(likedNumContext);
+  const { liked_users, setLiked_users } = useContext(liked_usersContext);
 
   //   const [Like, setLike] = useState(false);
   //   const [user, setUser] = useState<User | null>(null);
@@ -67,6 +69,13 @@ export function LikeButton() {
     }
     setLike(!Like);
     setLikedNum(Like ? likedNum - 1 : likedNum + 1);
+
+    setLiked_users(
+      Like
+        ? // @ts-ignore
+          liked_users.filter((this_user) => this_user.email !== user.email)
+        : [...liked_users, user]
+    );
 
     const email = user.email;
     const requestMethod = Like ? "DELETE" : "PUT";
