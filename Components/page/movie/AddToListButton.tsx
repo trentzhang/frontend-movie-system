@@ -42,7 +42,7 @@ export function AddToListButton() {
       .catch((error) => {
         console.error("Error:", error);
       });
-  }, [selectedKeys]);
+  }, [selectedKeys, addToLists]);
 
   return (
     <Dropdown className="bg-white/70 text-gray-700" backdrop="blur">
@@ -58,7 +58,6 @@ export function AddToListButton() {
         selectionMode="multiple"
         selectedKeys={selectedKeys}
         closeOnSelect={false}
-        //ts-ignore
         onSelectionChange={(keys) => setSelectedKeys(keys)}
 
         // classNames={{ base: "bg-black/20" }}

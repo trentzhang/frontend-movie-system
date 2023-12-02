@@ -80,28 +80,8 @@ export function LikeButton() {
     const email = user.email;
     const requestMethod = Like ? "DELETE" : "PUT";
 
-    // Send API to update database when like button is clicked
-    try {
-      const request = {
-        method: requestMethod,
-        headers: {
-          "Content-type": "application/json",
-        },
-      };
-
-      const res = await fetch(
-        `${process.env.NEXT_PUBLIC_BACKEND_URL}/liked/movies/${email}/${id}`,
-        request
-      );
-      if (!res.ok) {
-        throw new Error("Oops! Like Operation API Wrong, Please Try Again!");
-      }
-    } catch (error) {
-      console.log(error);
-      alert("Oops! Like Operation API Wrong, Please Try Again!");
-    }
     // update cache for movie page
-    await updateCache();
+    if (email && id) await updateCache(requestMethod, email, id);
   }
 
   // set liked to false when user logged out
