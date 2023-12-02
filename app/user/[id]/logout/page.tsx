@@ -5,6 +5,6 @@ import { redirect, useRouter } from "next/navigation";
 export default function Logout() {
   const router = useRouter();
   auth.signOut();
-  router.push("/");
+  router.back();
   return null;
 }

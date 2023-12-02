@@ -23,7 +23,7 @@ export default function Login() {
           alert(`Please verify your email before signing in!`);
           auth.signOut();
         }
-        router.push("/");
+        router.back();
       })
       .catch((error) => {
         const errorMessage = error.message;

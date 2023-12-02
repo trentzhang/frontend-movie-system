@@ -1,13 +1,11 @@
 "use client";
-
 import { LikedUsers } from "./LikedUsers";
 import ListsGroup from "@/Components/shared/ListsGroup";
 import CommentSection from "./CommentSection";
-import { Button, Image } from "@nextui-org/react";
-
-export function SectionTitle({ children }: { children: React.ReactNode }) {
-  return <h1 className="text-3xl text-white font-bold mt-2">{children}</h1>;
-}
+import { Image } from "@nextui-org/react";
+import { SectionTitle } from "./SectionTitle";
+import { LikeButton } from "./LikeButton";
+import { AddToListButton } from "./AddToListButton";
 
 export default function MovieDetailCard({ data }: { data: MovieAPI }) {
   const movieData = data.data;
@@ -47,14 +45,8 @@ export default function MovieDetailCard({ data }: { data: MovieAPI }) {
               </div>
             </div>
             <div className="flex flex-wrap gap-3">
-              <Button color="danger" aria-label="Like">
-                {/* <HeartIcon /> */}
-                Like
-              </Button>
-              <Button color="warning" variant="faded" aria-label="Save to list">
-                {/* <CameraIcon /> */}
-                Add to list
-              </Button>
+              <LikeButton />
+              <AddToListButton />
             </div>
           </div>
         </div>

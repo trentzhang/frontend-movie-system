@@ -1,4 +1,4 @@
-import MovieDetailCard from "@/Components/page/movie/MovieDetail";
+import MovieDetailCard from "@/Components/page/movie/MovieDetailCard";
 import { getData } from "@/lib/dataFetchers";
 
 async function MoviePage({ params }: { params: { id: string } }) {
