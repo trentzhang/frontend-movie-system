@@ -5,9 +5,10 @@ type likeContextType = {
   Like: boolean;
   setLike: React.Dispatch<React.SetStateAction<boolean>>;
 };
+
 type addToListsContextType = {
-  addToLists: string[];
-  setAddToLists: React.Dispatch<React.SetStateAction<string[]>>;
+  addToLists: typeof lists;
+  setAddToLists: React.Dispatch<React.SetStateAction<typeof lists>>;
 };
 type userContextType = {
   user: User | null;
@@ -20,9 +21,9 @@ type likedNumContextType = {
 };
 
 type liked_usersContextType = {
-  liked_users: (typeof movieAPI.data.liked_users | User)[];
+  liked_users: typeof movieAPI.data.liked_users;
   setLiked_users: React.Dispatch<
-    React.SetStateAction<(typeof movieAPI.data.liked_users | User)[]>
+    React.SetStateAction<typeof movieAPI.data.liked_users>
   >;
 };
 

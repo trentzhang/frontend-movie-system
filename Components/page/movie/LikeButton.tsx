@@ -71,9 +71,9 @@ export function LikeButton() {
     setLikedNum(Like ? likedNum - 1 : likedNum + 1);
 
     setLiked_users(
+      // @ts-ignore
       Like
-        ? // @ts-ignore
-          liked_users.filter((this_user) => this_user.email !== user.email)
+        ? liked_users.filter((this_user) => this_user.email !== user.email)
         : [...liked_users, user]
     );
 
@@ -110,6 +110,7 @@ export function LikeButton() {
       setLike(false);
     }
   }, [user, setLike]);
+
   return (
     <Button
       color="danger"

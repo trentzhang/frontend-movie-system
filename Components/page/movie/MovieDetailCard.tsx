@@ -6,7 +6,7 @@ import { Image } from "@nextui-org/react";
 import { SectionTitle } from "./SectionTitle";
 import { LikeButton } from "./LikeButton";
 import { AddToListButton } from "./AddToListButton";
-import { useEffect, useState } from "react";
+import { use, useEffect, useState } from "react";
 import { User } from "firebase/auth";
 import { auth } from "@/Components/shared/auth/Firebase";
 
@@ -31,6 +31,19 @@ export default function MovieDetailCard({ data }: { data: MovieAPI }) {
   auth.onAuthStateChanged((user) => {
     setUser(user);
   });
+
+  console.log("addToLists", addToLists);
+
+  useEffect(() => {
+    // get users lists
+    if (user) {
+      fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/lists/email/${user.email}`)
+        .then((response) => response.json())
+        .then((data) => {
+          setAddToLists(data.data);
+        });
+    }
+  }, [user]);
 
   return (
     <liked_usersContext.Provider value={{ liked_users, setLiked_users }}>
