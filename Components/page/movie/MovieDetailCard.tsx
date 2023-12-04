@@ -17,6 +17,7 @@ import {
   likedNumContext,
   liked_usersContext,
 } from "@/context/movie-detail-context";
+import { getData } from "@/lib/dataFetchers";
 
 export default function MovieDetailCard({ data }: { data: MovieAPI }) {
   const movieData = data.data;
@@ -32,16 +33,12 @@ export default function MovieDetailCard({ data }: { data: MovieAPI }) {
     setUser(user);
   });
 
-  console.log("addToLists", addToLists);
-
   useEffect(() => {
     // get users lists
     if (user) {
-      fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/lists/email/${user.email}`)
-        .then((response) => response.json())
-        .then((data) => {
-          setAddToLists(data.data);
-        });
+      getData(`/api/${user.email}/lists`).then((data) => {
+        setAddToLists(data.data.data);
+      });
     }
   }, [user]);
 

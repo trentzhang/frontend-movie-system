@@ -12,26 +12,6 @@ import {
 import { PressEvent } from "@react-types/shared";
 import { useContext, useEffect, useMemo, useState } from "react";
 
-function movieToList(
-  movieId: string,
-  listId: string | number,
-  method: "PUT" | "DELETE"
-) {
-  fetch(
-    `${process.env.NEXT_PUBLIC_BACKEND_URL}/list/movie/${listId}/${movieId}`,
-    {
-      method: method,
-    }
-  )
-    .then((response) => response.json())
-    .then((data) => {
-      console.log("Success:", data);
-    })
-    .catch((error) => {
-      console.error("Error:", error);
-    });
-}
-
 export function AddToListButton() {
   const [selectedKeys, setSelectedKeys] = useState(new Set([]) as Selection);
 
@@ -72,7 +52,8 @@ export function AddToListButton() {
       return;
     }
 
-    movieToList(movieId, ListId, method);
+    // movieToList(movieId, ListId, method);
+    getData(`/api/movie-lists/${ListId}/${movieId}`, { method: method });
   }
 
   return (
