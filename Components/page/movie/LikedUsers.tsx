@@ -22,12 +22,12 @@ export function LikedUsers({ liked_users }: { liked_users: LikedUsersProps }) {
                 key={index}
                 showArrow={true}
                 content={
-                  <div className="flex flex-col items-center justify-center text-black">
+                  <div className="flex flex-col items-center justify-center text-black w-min">
                     <div>{user.username}</div>
                   </div>
                 }
               >
-                <Link href={`/user/${user.email}`}>
+                <Link href={`/user/${user.email}`} className="w-min">
                   <Avatar isBordered src={genderDefaultAvater(user.gender)} />
                 </Link>
               </Tooltip>

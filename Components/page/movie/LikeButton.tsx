@@ -14,7 +14,7 @@ import {
   userContext,
 } from "@/context/movie-detail-context";
 import { revalidatePath, revalidateTag } from "next/cache";
-import { updateCache } from "@/app/movie/[id]/actions";
+import { updateLike } from "@/app/movie/[id]/actions";
 // import { useRouter as useRouterClient } from "next/router";
 export function LikeButton() {
   const params = useParams();
@@ -81,7 +81,7 @@ export function LikeButton() {
     const requestMethod = Like ? "DELETE" : "PUT";
 
     // update cache for movie page
-    if (email && id) await updateCache(requestMethod, email, id);
+    if (email && id) await updateLike(requestMethod, email, id);
   }
 
   // set liked to false when user logged out
