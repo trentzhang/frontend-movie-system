@@ -10,7 +10,7 @@ type UserDetailProps = { data: UserAPI };
 export default function UserDetail({ data }: UserDetailProps) {
   const user = data.data;
   return (
-    <div className="dark mx-10 flex  gap-2">
+    <div className="mt-24 dark mx-10 flex  gap-2">
       <div>
         <Avatar gender={user.gender} avatar={user.avatar} />
         <BasicInformation

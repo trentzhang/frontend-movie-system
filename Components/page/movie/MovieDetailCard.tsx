@@ -51,7 +51,7 @@ export default function MovieDetailCard({ data }: { data: MovieAPI }) {
         <likeContext.Provider value={{ Like, setLike }}>
           <addToListsContext.Provider value={{ addToLists, setAddToLists }}>
             <userContext.Provider value={{ user, setUser }}>
-              <div className="flex flex-col items-center">
+              <div className="mt-24 flex flex-col items-center">
                 <div className="flex flex-col  bg-white/20 rounded-2xl w-[70vw] overflow-hidden">
                   <div className="flex gap-8 flex-col md:flex-row">
                     <div className="flex items-center justify-center min-w-max mt-5 md:mt-0">

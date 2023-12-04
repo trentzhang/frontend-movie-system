@@ -16,7 +16,7 @@ export default function SignUp() {
 
   function onClickSignUp() {}
   return (
-    <Card className="flex flex-col gap-3 justify-center items-center bg-slate-600/30">
+    <Card className="mt-24 flex flex-col gap-3 justify-center items-center bg-slate-600/30">
       <CardHeader className="text-4xl font-bold text-white">Sign Up</CardHeader>
       <CardBody className="flex flex-col items-center justify-center w-96 gap-3">
         <MyInput

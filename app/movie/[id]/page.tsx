@@ -7,7 +7,7 @@ async function MoviePage({ params }: { params: { id: string } }) {
     `${process.env.BACKEND_URL}/movies/${params.id}`,
     { next: { tags: ["MoviePage"] } }
   );
-  console.log("first", auth.currentUser);
+
   return <MovieDetailCard data={movieData}></MovieDetailCard>;
 }
 

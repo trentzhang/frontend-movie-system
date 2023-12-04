@@ -13,7 +13,7 @@ import Link from "next/link";
 export default function ListDetail({ data }: { data: ListAPI }) {
   const list = data.data;
   return (
-    <Card className="dark max-w-[800px]">
+    <Card className="mt-24 dark max-w-[800px]">
       <CardHeader className="flex justify-between flex-wrap">
         <span>{list.name}</span>
         <span>Liked Number: {list.liked_num}</span>
