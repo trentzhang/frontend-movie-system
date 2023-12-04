@@ -1,5 +1,6 @@
 "use client";
 import { addToListsContext } from "@/context/movie-detail-context";
+import { getData } from "@/lib/dataFetchers";
 import {
   Button,
   Dropdown,
@@ -8,41 +9,71 @@ import {
   DropdownTrigger,
   Selection,
 } from "@nextui-org/react";
+import { PressEvent } from "@react-types/shared";
 import { useContext, useEffect, useMemo, useState } from "react";
+
+function movieToList(
+  movieId: string,
+  listId: string | number,
+  method: "PUT" | "DELETE"
+) {
+  fetch(
+    `${process.env.NEXT_PUBLIC_BACKEND_URL}/list/movie/${listId}/${movieId}`,
+    {
+      method: method,
+    }
+  )
+    .then((response) => response.json())
+    .then((data) => {
+      console.log("Success:", data);
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+    });
+}
 
 export function AddToListButton() {
   const [selectedKeys, setSelectedKeys] = useState(new Set([]) as Selection);
-  const selectedValue = useMemo(
-    () => Array.from(selectedKeys).join(", ").replaceAll("_", " "),
-    [selectedKeys]
-  );
 
   const { addToLists } = useContext(addToListsContext);
 
-  // when selectedKeys changes, put the movie into the list
+  // initialize selectedKeys with the lists that the movie is already in by calling the API
   useEffect(() => {
-    const listName = Array.from(selectedKeys)[0];
-    const ListId = addToLists.find((list) => list.name === listName)?.id;
+    async function getListsWithCurrentMovieInside() {
+      const movieId = window.location.pathname.split("/")[2];
+      for (const list of addToLists) {
+        const listData: ListAPI = await getData(
+          `${process.env.NEXT_PUBLIC_BACKEND_URL}/lists/id/${list.id}`
+        );
+        // if movieId in  listData.data.movies then add list.name to selectedKeys
+        const movieIds = listData.data.movies.map((movie) => movie.id);
+        if (movieIds.includes(movieId)) {
+          if (selectedKeys !== "all") selectedKeys.add(list.name);
+        }
+      }
+    }
+
+    getListsWithCurrentMovieInside();
+  }, [addToLists, selectedKeys]);
+
+  function onPressListName(e: PressEvent) {
+    const pressedListName = e.target.children[0].innerHTML;
+    // if pressedListName is in selectedKeys, then remove it from the list
+    const method =
+      selectedKeys !== "all" && selectedKeys.has(pressedListName)
+        ? "PUT"
+        : "DELETE";
+    console.log("method", pressedListName, method);
+
+    const ListId = addToLists.find((list) => list.name === pressedListName)?.id;
     const movieId = window.location.pathname.split("/")[2];
 
     if (!ListId) {
       return;
     }
 
-    fetch(
-      `${process.env.NEXT_PUBLIC_BACKEND_URL}/list/movie/${ListId}/${movieId}`,
-      {
-        method: "PUT",
-      }
-    )
-      .then((response) => response.json())
-      .then((data) => {
-        console.log("Success:", data);
-      })
-      .catch((error) => {
-        console.error("Error:", error);
-      });
-  }, [selectedKeys, addToLists]);
+    movieToList(movieId, ListId, method);
+  }
 
   return (
     <Dropdown className="bg-white/70 text-gray-700" backdrop="blur">
@@ -58,13 +89,17 @@ export function AddToListButton() {
         selectionMode="multiple"
         selectedKeys={selectedKeys}
         closeOnSelect={false}
-        onSelectionChange={(keys) => setSelectedKeys(keys)}
+        onSelectionChange={setSelectedKeys}
 
         // classNames={{ base: "bg-black/20" }}
       >
         {addToLists.map((list) => {
           return (
-            <DropdownItem key={list.name} value={list.name}>
+            <DropdownItem
+              key={list.name}
+              value={list.name}
+              onPress={onPressListName}
+            >
               {list.name}
             </DropdownItem>
           );
