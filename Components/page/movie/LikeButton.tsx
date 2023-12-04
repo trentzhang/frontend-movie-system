@@ -15,6 +15,7 @@ import {
 } from "@/context/movie-detail-context";
 import { revalidatePath, revalidateTag } from "next/cache";
 import { updateLike } from "@/app/movie/[id]/actions";
+import { getData } from "@/lib/dataFetchers";
 // import { useRouter as useRouterClient } from "next/router";
 export function LikeButton() {
   const params = useParams();
@@ -42,10 +43,7 @@ export function LikeButton() {
       movie_Id: string | string[]
     ) {
       try {
-        const response = await fetch(
-          `${process.env.NEXT_PUBLIC_BACKEND_URL}/liked/movies/${email}/${movie_Id}`
-        );
-        const data = (await response.json()).data;
+        const data = await getData(`/api/${email}/${movie_Id}`);
 
         return data ? true : false;
       } catch (error) {

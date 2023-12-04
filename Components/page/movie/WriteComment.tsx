@@ -4,7 +4,8 @@ import { useParams } from "next/navigation";
 import { useState } from "react";
 
 export default function WriteComment() {
-  const movie_Id = useParams();
+  const params = useParams();
+
   const [comment, setComment] = useState("");
 
   const uploadComment = async () => {
@@ -24,7 +25,7 @@ export default function WriteComment() {
       };
 
       await fetch(
-        `${process.env.NEXT_PUBLIC_BACKEND_URL}/movie/comment/${movie_Id}`,
+        `${process.env.NEXT_PUBLIC_BACKEND_URL}/movie/comment/${params.id}`,
         request
       );
 

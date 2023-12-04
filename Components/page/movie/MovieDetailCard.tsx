@@ -37,7 +37,7 @@ export default function MovieDetailCard({ data }: { data: MovieAPI }) {
     // get users lists
     if (user) {
       getData(`/api/${user.email}/lists`).then((data) => {
-        setAddToLists(data.data.data);
+        setAddToLists(data.data);
       });
     }
   }, [user]);

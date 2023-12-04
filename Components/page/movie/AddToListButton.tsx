@@ -22,9 +22,7 @@ export function AddToListButton() {
     async function getListsWithCurrentMovieInside() {
       const movieId = window.location.pathname.split("/")[2];
       for (const list of addToLists) {
-        const listData: ListAPI = await getData(
-          `${process.env.NEXT_PUBLIC_BACKEND_URL}/lists/id/${list.id}`
-        );
+        const listData: ListAPI = await getData(`/api/movie-lists/${list.id}`);
         // if movieId in  listData.data.movies then add list.name to selectedKeys
         const movieIds = listData.data.movies.map((movie) => movie.id);
         if (movieIds.includes(movieId)) {
