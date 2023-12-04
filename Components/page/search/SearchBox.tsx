@@ -38,10 +38,7 @@ export function SearchBox() {
         },
         body: JSON.stringify(searchCriteria),
       };
-      const data = await getData(
-        `${process.env.NEXT_PUBLIC_BACKEND_URL}/search_movie`,
-        request
-      );
+      const data = await getData(`/search_movie/api`, request);
 
       if (!data.data) {
         setSearchResults([]);
@@ -67,13 +64,13 @@ export function SearchBox() {
           <motion.div className="w-fit min-w-[50vw] min-h-[20vh]  m-24 p-4 rounded-2xl flex flex-col gap-3  items-center bg-slate-600/30 text-white shadow-lg">
             <motion.div className="flex w-full items-center justify-center gap-3">
               <SearchInput />
-              <Button
+              {/* <Button
                 onClick={() => {
                   fetchData();
                 }}
               >
                 Search
-              </Button>
+              </Button> */}
             </motion.div>
             <motion.div className="w-full">
               <SearchFilterCheck />
