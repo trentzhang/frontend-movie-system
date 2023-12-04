@@ -45,7 +45,7 @@ export function LikeButton() {
       try {
         const data = await getData(`/api/${email}/${movie_Id}`);
 
-        return data ? true : false;
+        return data.data ? true : false;
       } catch (error) {
         console.error("Error fetching like status:", error);
         return false;
