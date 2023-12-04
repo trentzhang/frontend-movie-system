@@ -37,7 +37,7 @@ export default function Search() {
         body: JSON.stringify(searchCriteria),
       };
       const data = await getData(
-        `${process.env.BACKEND_URL}/search_movie`,
+        `${process.env.NEXT_PUBLIC_BACKEND_URL}/search_movie`,
         request
       );
 
@@ -51,15 +51,15 @@ export default function Search() {
     }
   }, [searchLanguage, searchMovieType, searchText, searchResultPage]);
 
-  useEffect(() => {
-    fetchData();
-  }, [
-    searchText,
-    searchLanguage,
-    searchMovieType,
-    searchResultPage,
-    fetchData,
-  ]);
+  //   useEffect(() => {
+  //     fetchData();
+  //   }, [
+  //     searchText,
+  //     searchLanguage,
+  //     searchMovieType,
+  //     searchResultPage,
+  //     fetchData,
+  //   ]);
 
   return (
     <searchLanguageContext.Provider
