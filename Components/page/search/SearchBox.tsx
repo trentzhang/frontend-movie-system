@@ -1,40 +1,100 @@
-import { Button, Input, NextUIProvider } from "@nextui-org/react";
-import { FaSearch } from "react-icons/fa";
-import React, { useContext } from "react";
-import { searchTextContext } from "@/context/search-context";
+"use client";
+import SearchFilterCheck from "@/Components/page/search/SearchFilterCheck";
+import SearchInput from "@/Components/page/search/SearchInput";
+import SearchResult from "@/Components/page/search/SearchResult";
+import {
+  searchLanguageContext,
+  searchTextContext,
+  searchTypeContext,
+} from "@/context/search-context";
+import { getData } from "@/lib/dataFetchers";
+import { motion } from "framer-motion";
+import { useCallback, useEffect, useState } from "react";
+import { Button, Pagination } from "@nextui-org/react";
 
-export default function SearchBox() {
-  const { searchText, setSearchText } = useContext(searchTextContext);
-  return (
-    <Input
-      onValueChange={setSearchText}
-      label="Search"
-      isClearable
-      radius="lg"
-      classNames={{
-        label: "text-black/50 dark:text-white/90",
-        input: [
-          "bg-transparent",
-          "text-black/90 dark:text-white/90",
-          "placeholder:text-default-700/50 dark:placeholder:text-white/60",
-        ],
-        innerWrapper: "bg-transparent",
-        inputWrapper: [
-          "shadow-xl",
-          "backdrop-blur-xl",
-          "backdrop-saturate-200",
-          "hover:bg-default-200/70",
-          "dark:hover:bg-default/70",
-          "group-data-[focused=true]:bg-default-200/50",
-          "dark:group-data-[focused=true]:bg-default/60",
-          "!cursor-text",
-        ],
-        clearButton: ["text-black"],
-      }}
-      placeholder="Type to search..."
-      startContent={
-        <FaSearch className="text-black/50 mb-0.5 dark:text-white/90 text-slate-800 pointer-events-none flex-shrink-0" />
+// encapsulate the search Box
+
+export function SearchBox() {
+  const [searchText, setSearchText] = useState("");
+  const [searchLanguage, setSearchLanguage] = useState("");
+  const [searchMovieType, setSearchMovieType] = useState("");
+  const [searchResultPage, setSearchResultPage] = useState(0);
+  const [searchResults, setSearchResults] = useState([]);
+
+  const fetchData = useCallback(async () => {
+    try {
+      const searchCriteria = {
+        language: searchLanguage,
+        type: searchMovieType,
+        keyword: searchText,
+        searchType: "Movie",
+        page: searchResultPage,
+      };
+
+      const request = {
+        method: "POST",
+        headers: {
+          "Content-type": "application/json",
+        },
+        body: JSON.stringify(searchCriteria),
+      };
+      const data = await getData(
+        `${process.env.NEXT_PUBLIC_BACKEND_URL}/search_movie`,
+        request
+      );
+
+      if (!data.data) {
+        setSearchResults([]);
+      } else {
+        setSearchResults(data.data);
       }
-    />
+    } catch (error) {
+      console.error("Error fetching search results:", error);
+    }
+  }, [searchLanguage, searchMovieType, searchText, searchResultPage]);
+
+  useEffect(() => {
+    fetchData();
+  }, [searchResultPage, fetchData]);
+  return (
+    <searchLanguageContext.Provider
+      value={{ searchLanguage, setSearchLanguage }}
+    >
+      <searchTypeContext.Provider
+        value={{ searchMovieType, setSearchMovieType }}
+      >
+        <searchTextContext.Provider value={{ searchText, setSearchText }}>
+          <motion.div className="w-fit min-w-[50vw] min-h-[20vh]  m-24 p-4 rounded-2xl flex flex-col gap-3  items-center bg-slate-600/30 text-white shadow-lg">
+            <motion.div className="flex w-full items-center justify-center gap-3">
+              <SearchInput />
+              <Button
+                onClick={() => {
+                  fetchData();
+                }}
+              >
+                Search
+              </Button>
+            </motion.div>
+            <motion.div className="w-full">
+              <SearchFilterCheck />
+            </motion.div>
+            <SearchResult movies={searchResults} />
+            <Pagination
+              showControls
+              total={10}
+              initialPage={1}
+              onChange={(page) => setSearchResultPage(page - 1)}
+              classNames={{
+                wrapper:
+                  "gap-0 overflow-visible h-8 rounded border border-divider",
+                item: "mx-1 ",
+                cursor:
+                  "bg-gradient-to-b from-slate-500 to-default-800  shadow-lg  text-white font-bold",
+              }}
+            />
+          </motion.div>
+        </searchTextContext.Provider>
+      </searchTypeContext.Provider>
+    </searchLanguageContext.Provider>
   );
 }
