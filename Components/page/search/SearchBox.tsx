@@ -38,7 +38,7 @@ export function SearchBox() {
         },
         body: JSON.stringify(searchCriteria),
       };
-      const data = await getData(`/search_movie/api`, request);
+      const data = await getData(`/search/api`, request);
 
       if (!data.data) {
         setSearchResults([]);
