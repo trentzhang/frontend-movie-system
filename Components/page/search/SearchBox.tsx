@@ -11,13 +11,7 @@ import { useCallback, useEffect, useState } from "react";
 // encapsulate the search Box
 
 export function SearchBox() {
-  const {
-    searchLanguage,
-    setSearchLanguage,
-    searchMovieType,
-    setSearchMovieType,
-    searchText,
-  } = useSearchContext();
+  const { searchLanguage, searchMovieType, searchText } = useSearchContext();
 
   const [searchResultPage, setSearchResultPage] = useState(0);
   const [searchResults, setSearchResults] = useState([]);
