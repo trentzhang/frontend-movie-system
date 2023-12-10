@@ -86,7 +86,7 @@ export default function Header() {
   });
 
   return (
-    <motion.div className="w-full sm:w-[45em] h-24 sm:h-min z-[1000] fixed top-0 sm:top-4 left-1/2 -translate-x-1/2 px-4  bg-slate-600/30 backdrop-blur-md sm:rounded-full flex items-center justify-between gap-3  sm:border-slate-600 sm:border-1">
+    <motion.div className="w-full sm:w-[45em] h-24 sm:h-min z-[1000] fixed top-0 sm:top-4 left-1/2 -translate-x-1/2 px-4  bg-slate-600/30 backdrop-blur-xl sm:rounded-full flex items-center justify-between gap-3  sm:border-slate-600 sm:border-1">
       <Logo />
       <activePageContext.Provider
         value={{ activePage, setActivePage, debouncedSetActivePage }}
