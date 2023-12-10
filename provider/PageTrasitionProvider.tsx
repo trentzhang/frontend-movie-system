@@ -17,7 +17,7 @@ function FrozenRouter({ children }: { children: React.ReactNode }) {
 
 export default function Providers({ children }: { children: React.ReactNode }) {
   return (
-    <AnimatePresence mode="wait" initial={false}>
+    <AnimatePresence mode="popLayout" initial={false}>
       <motion.div
         key={usePathname()}
         initial={{ y: "10%", opacity: 0 }}
