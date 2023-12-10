@@ -1,33 +1,29 @@
 "use client";
-import { auth } from "@/Components/shared/auth/Firebase";
 import { Button } from "@nextui-org/react";
 import { useParams, usePathname, useRouter } from "next/navigation";
 
-import { useContext, useEffect, useState } from "react";
-import { IoHeartDislikeOutline } from "react-icons/io5";
-import { IoMdHeartDislike, IoMdHeartEmpty } from "react-icons/io";
-import { User } from "firebase/auth";
-import {
-  likeContext,
-  likedNumContext,
-  liked_usersContext,
-  userContext,
-} from "@/context/movie-detail-context";
-import { revalidatePath, revalidateTag } from "next/cache";
 import { updateLike } from "@/app/movie/[id]/actions";
+import { useMovieDetailContext } from "@/context/movie-detail-context";
 import { getData } from "@/lib/dataFetchers";
-// import { useRouter as useRouterClient } from "next/router";
+import { useEffect } from "react";
+import { IoMdHeartDislike, IoMdHeartEmpty } from "react-icons/io";
+
 export function LikeButton() {
   const params = useParams();
   const path = usePathname();
   const id = params.id;
   const router = useRouter();
-  //   const routerClient = useRouterClient();
 
-  const { Like, setLike } = useContext(likeContext);
-  const { user, setUser } = useContext(userContext);
-  const { likedNum, setLikedNum } = useContext(likedNumContext);
-  const { liked_users, setLiked_users } = useContext(liked_usersContext);
+  const {
+    Like,
+    setLike,
+    user,
+    setUser,
+    likedNum,
+    setLikedNum,
+    liked_users,
+    setLiked_users,
+  } = useMovieDetailContext();
 
   //   const [Like, setLike] = useState(false);
   //   const [user, setUser] = useState<User | null>(null);

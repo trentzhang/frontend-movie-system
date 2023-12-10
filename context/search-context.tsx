@@ -8,14 +8,7 @@ type SearchContext = {
   setSearchText: React.Dispatch<React.SetStateAction<string>>;
 };
 
-export const searchContext = createContext<SearchContext>({
-  searchLanguage: "",
-  setSearchLanguage: () => {},
-  searchMovieType: "",
-  setSearchMovieType: () => {},
-  searchText: "",
-  setSearchText: () => {},
-} as SearchContext);
+export const searchContext = createContext<SearchContext>({} as SearchContext);
 
 export default function SearchContextProvider({
   children,

@@ -1,5 +1,8 @@
 "use client";
-import { addToListsContext } from "@/context/movie-detail-context";
+import {
+  //   addToListsContext,
+  useMovieDetailContext,
+} from "@/context/movie-detail-context";
 import { getData } from "@/lib/dataFetchers";
 import {
   Button,
@@ -10,12 +13,14 @@ import {
   Selection,
 } from "@nextui-org/react";
 import { PressEvent } from "@react-types/shared";
+import { useRouter } from "next/navigation";
 import { useContext, useEffect, useMemo, useState } from "react";
 
 export function AddToListButton() {
   const [selectedKeys, setSelectedKeys] = useState(new Set([]) as Selection);
 
-  const { addToLists } = useContext(addToListsContext);
+  //   const { addToLists } = useContext(addToListsContext);
+  const { addToLists, user } = useMovieDetailContext();
 
   // initialize selectedKeys with the lists that the movie is already in by calling the API
   useEffect(() => {
@@ -54,10 +59,21 @@ export function AddToListButton() {
     getData(`/api/movie-lists/${ListId}/${movieId}`, { method: method });
   }
 
+  const router = useRouter();
+  function handelSaveToList() {
+    if (!user) {
+      router.push("/login");
+      return false;
+    }
+  }
   return (
     <Dropdown className="bg-white/70 text-gray-700" backdrop="blur">
       <DropdownTrigger>
-        <Button variant="faded" aria-label="Save to list">
+        <Button
+          variant="faded"
+          aria-label="Save to list"
+          onClick={handelSaveToList}
+        >
           {/* <CameraIcon /> */}
           {"Save to list"}
         </Button>
