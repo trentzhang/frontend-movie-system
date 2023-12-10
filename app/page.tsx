@@ -24,7 +24,7 @@ export default async function Home() {
   const { moviesRandom, moviesSortedByRating, lists } = data.data;
 
   return (
-    <div className="flex flex-col items-center justify-center  my-24">
+    <div className="my-24">
       <TopMovies movies={moviesSortedByRating} />
       <RandomMovies movies={moviesRandom} />
       <TopLists lists={lists} />

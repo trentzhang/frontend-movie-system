@@ -6,5 +6,9 @@ export default async function Page({ params }: { params: { id: string } }) {
     `${process.env.BACKEND_URL}/user/full/${params.id}`,
     { cache: "no-cache" }
   );
-  return <UserDetail data={data} />;
+  return (
+    <div className="my-24 max-w-md sm:max-w-none">
+      <UserDetail data={data} />
+    </div>
+  );
 }

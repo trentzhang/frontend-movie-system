@@ -9,7 +9,7 @@ export default function MoviesGroup({ movies }: { movies: Movie[] }) {
         className=" grid grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-3 justify-center items-center w-fit h-[500px]"
         hideScrollBar
       > */}
-      <div className=" grid grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-3 justify-center items-center w-fit">
+      <div className=" grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3 justify-center items-center w-fit">
         {movies.map((movie, index) => (
           <MovieCard movie={movie} key={index}></MovieCard>
         ))}
