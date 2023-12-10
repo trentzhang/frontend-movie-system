@@ -1,10 +1,10 @@
 import { Button, Input, NextUIProvider } from "@nextui-org/react";
 import { FaSearch } from "react-icons/fa";
 import React, { useContext } from "react";
-import { searchTextContext } from "@/context/search-context";
+import { useSearchContext } from "@/context/search-context";
 
 export default function SearchInput() {
-  const { searchText, setSearchText } = useContext(searchTextContext);
+  const { searchText, setSearchText } = useSearchContext();
   return (
     <Input
       onValueChange={setSearchText}

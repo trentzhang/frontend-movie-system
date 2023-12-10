@@ -1,9 +1,6 @@
-import {
-  searchLanguageContext,
-  searchTypeContext,
-} from "@/context/search-context";
+import { useSearchContext } from "@/context/search-context";
 import { Select, SelectItem } from "@nextui-org/react";
-import React, { useContext, useState } from "react";
+import React from "react";
 
 const movieLanguages = [
   "English",
@@ -27,7 +24,6 @@ const movieTypes = [
 type MySelectProps = {
   label: string;
   items: string[];
-  //   Context: React.Context<any>;
   setValue: React.Dispatch<React.SetStateAction<string>>;
 };
 
@@ -54,8 +50,9 @@ function MySelect({ label, items, setValue }: MySelectProps) {
 }
 
 export default function SearchFilterCheck() {
-  const { setSearchLanguage } = useContext(searchLanguageContext);
-  const { setSearchMovieType } = useContext(searchTypeContext);
+  const { searchLanguage, setSearchLanguage, setSearchMovieType } =
+    useSearchContext();
+  console.log("searchLanguage", searchLanguage);
   return (
     <div className="flex w-full flex-wrap md:flex-nowrap gap-4 justify-center">
       <MySelect
