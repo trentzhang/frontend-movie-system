@@ -19,7 +19,7 @@ export default function ListsGroup({ lists }: ListsGroupProps) {
     <Table
       aria-label="Example empty table"
       className={" dark "}
-      classNames={{ wrapper: ["px-0"] }}
+      //   classNames={{ wrapper: ["px-0"] }}
     >
       <TableHeader>
         <TableColumn>Name</TableColumn>

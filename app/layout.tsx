@@ -22,7 +22,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className="!scroll-smooth  min-h-screen h-full flex  flex-col items-center justify-between bg-black/[0.86] text-white overflow-x-hidden"
+      className="!scroll-smooth  min-h-screen h-full flex  flex-col items-center justify-between bg-black/[0.86] text-white "
     >
       <body
         className={
