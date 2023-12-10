@@ -1,3 +1,4 @@
+"use client";
 import { ScrollShadow } from "@nextui-org/react";
 import { MovieCard } from "../page/home/MovieCard";
 import { AnimatePresence, motion } from "framer-motion";
@@ -16,7 +17,7 @@ export default function MoviesGroup({ movies }: { movies: Movie[] }) {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
-        key={movies[0].id}
+        key={movies[0]?.id}
       >
         {movies.map((movie, index) => (
           <MovieCard movie={movie} key={index}></MovieCard>
