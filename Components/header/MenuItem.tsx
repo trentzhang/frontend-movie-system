@@ -47,10 +47,21 @@ function MenuItem({ page, className }: MenuItemProps) {
       //   ${isPageActive(activePage, page.link) ? "bg-slate-300/50 " : ""}
       //   `}
       onHoverEnd={() => {
-        debouncedSetActivePage(pathname);
+        //   if screen is small, set active section without debounce
+        if (window.innerWidth < 640) {
+          setActivePage(pathname);
+        } else {
+          //   debouncedSetActivePage(pathname);
+          setActivePage(pathname);
+        }
       }}
       onHoverStart={() => {
-        debouncedSetActivePage(page.link);
+        if (window.innerWidth < 640) {
+          setActivePage(page.link);
+        } else {
+          //   debouncedSetActivePage(page.link);
+          setActivePage(page.link);
+        }
       }}
     >
       <motion.div layout>
