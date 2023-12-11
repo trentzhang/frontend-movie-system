@@ -25,13 +25,6 @@ export function LikeButton() {
     setLiked_users,
   } = useMovieDetailContext();
 
-  //   const [Like, setLike] = useState(false);
-  //   const [user, setUser] = useState<User | null>(null);
-
-  //   auth.onAuthStateChanged((user) => {
-  //     setUser(user);
-  //   });
-
   // Initialize like status
   useEffect(() => {
     async function currentUserLikeThisMovie(

@@ -67,12 +67,17 @@ export function AddToListButton() {
     }
   }
   return (
-    <Dropdown className="bg-white/70 text-gray-700" backdrop="blur">
+    <Dropdown
+      className="bg-white/70 text-gray-700"
+      backdrop="blur"
+      isDisabled={true}
+    >
       <DropdownTrigger>
         <Button
           variant="faded"
           aria-label="Save to list"
-          onClick={handelSaveToList}
+          //   onClick={handelSaveToList}
+          //   isDisabled={true}
         >
           {/* <CameraIcon /> */}
           {"Save to list"}
@@ -85,8 +90,6 @@ export function AddToListButton() {
         selectedKeys={selectedKeys}
         closeOnSelect={false}
         onSelectionChange={setSelectedKeys}
-
-        // classNames={{ base: "bg-black/20" }}
       >
         {addToLists.map((list) => {
           return (
