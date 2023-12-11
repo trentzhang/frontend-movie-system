@@ -37,7 +37,7 @@ function MenuItem({ page, className }: MenuItemProps) {
       transition={{
         type: "spring",
         stiffness: 320,
-        damping: 30,
+        damping: 60,
       }}
       className={`${className} px-2 py-1  sm:px-4 sm:py-2  rounded-full flex  transition-[color] ${
         isPageActive(activePage, page.link) ? "bg-slate-300/50 " : ""
@@ -52,6 +52,10 @@ function MenuItem({ page, className }: MenuItemProps) {
           setActivePage(pathname);
         } else {
           //   debouncedSetActivePage(pathname);
+          // delay setting active page to pathname
+          //   setTimeout(() => {
+          //     setActivePage(pathname);
+          //   }, 900);
           setActivePage(pathname);
         }
       }}
