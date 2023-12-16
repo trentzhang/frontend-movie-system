@@ -39,7 +39,7 @@ function MenuItem({ page, className }: MenuItemProps) {
         stiffness: 320,
         damping: 50,
       }}
-      className={`${className} px-2 py-1  sm:px-4 sm:py-2  rounded-full flex  transition-[color] ${
+      className={`${className} px-2 py-1  sm:px-4 sm:py-2  rounded-full flex justify-between transition-[color] ${
         isPageActive(activePage, page.link) ? "bg-slate-300/50 " : ""
       }
       `}
@@ -68,7 +68,7 @@ function MenuItem({ page, className }: MenuItemProps) {
         }
       }}
     >
-      <motion.div layout>
+      <motion.div layout >
         <Link
           href={page.link}
           onClick={() => {

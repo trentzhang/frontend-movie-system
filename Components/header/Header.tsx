@@ -92,8 +92,8 @@ export default function Header() {
         value={{ activePage, setActivePage, debouncedSetActivePage }}
       >
         <motion.nav className="flex flex-col sm:flex-row  flex-wrap  w-[400px] sm:w-full sm:justify-between sm:items-center text-sm">
-          <MenuItem page={menu.home} className="min-w-[240px]" />
-          <MenuItem page={menu.search} />
+          <MenuItem page={menu.home} className="min-w-[240px] grow" />
+          <MenuItem page={menu.search} className="grow"/>
           {/* {user ? (
             <MenuItem page={loggedIn} />
           ) : (
@@ -102,7 +102,7 @@ export default function Header() {
               <MenuItem page={menu.signUp} />
             </>
           )} */}
-          <MenuItem page={myHome} />
+          <MenuItem page={myHome} className="grow"/>
         </motion.nav>
       </activePageContext.Provider>
     </motion.div>
