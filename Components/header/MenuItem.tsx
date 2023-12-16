@@ -1,5 +1,6 @@
 // MenuItem.jsx
-import React, { use, useContext } from "react";
+"use client";
+import React, { use, useContext, useEffect, useState } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { MenuSubItem } from "./MenuSubItem";
@@ -10,6 +11,41 @@ import { useActiveSectionContext } from "@/context/active-section-context";
 function isPageActive(pathname: string, link: string) {
   if (link === "/user/id") return pathname.startsWith("/user");
   else return pathname === link;
+}
+
+function isSmallScreen(width: number) {
+  return width < 640;
+}
+// Hook
+function useWindowSize() {
+  // Initialize state with undefined width/height so server and client renders match
+  // Learn more here: https://joshwcomeau.com/react/the-perils-of-rehydration/
+  const [windowSize, setWindowSize] = useState({
+    width: 0,
+    height: 0,
+  });
+
+  useEffect(() => {
+    // only execute all the code below in client side
+    // Handler to call on window resize
+    function handleResize() {
+      // Set window width/height to state
+      setWindowSize({
+        width: window.innerWidth,
+        height: window.innerHeight,
+      });
+    }
+
+    // Add event listener
+    window.addEventListener("resize", handleResize);
+
+    // Call handler right away so state gets updated with initial window size
+    handleResize();
+
+    // Remove event listener on cleanup
+    return () => window.removeEventListener("resize", handleResize);
+  }, []); // Empty array ensures that effect is only run on mount
+  return windowSize;
 }
 
 export type MenuItemProps = {
@@ -31,6 +67,8 @@ function MenuItem({ page, className }: MenuItemProps) {
     useContext(activePageContext);
   const { activeSection, setActiveSection } = useActiveSectionContext();
 
+  const size = useWindowSize();
+
   return (
     <motion.div
       layout
@@ -43,11 +81,10 @@ function MenuItem({ page, className }: MenuItemProps) {
         isPageActive(activePage, page.link) ? "bg-slate-300/50 " : ""
       }
       `}
-
       onHoverEnd={() => {
         //   if screen is small, set active section without debounce
         if (window.innerWidth < 640) {
-          setActivePage(pathname);
+          //   setActivePage(pathname);
         } else {
           setActivePage(pathname);
         }
@@ -61,7 +98,7 @@ function MenuItem({ page, className }: MenuItemProps) {
         }
       }}
     >
-      <motion.div layout >
+      <motion.div layout>
         <Link
           href={page.link}
           onClick={() => {
@@ -77,21 +114,22 @@ function MenuItem({ page, className }: MenuItemProps) {
           </span>
         </Link>
       </motion.div>
-      {(isPageActive(activePage, page.link)||window.innerWidth < 640) && page.subItems[0] && (
-        <motion.div
-          //   layout
-          transition={{ duration: 4 }}
-          className={"ml-6 flex flex-wrap justify-end gap-2 "}
-        >
-          {page.subItems.map((subItem, index) => (
-            <MenuSubItem
-              key={index}
-              hrefLink={page.link + subItem.link}
-              section={subItem}
-            />
-          ))}
-        </motion.div>
-      )}
+      {(isPageActive(activePage, page.link) || isSmallScreen(size.width)) &&
+        page.subItems[0] && (
+          <motion.div
+            //   layout
+            transition={{ duration: 4 }}
+            className={"ml-6 flex flex-wrap justify-end gap-2 "}
+          >
+            {page.subItems.map((subItem, index) => (
+              <MenuSubItem
+                key={index}
+                hrefLink={page.link + subItem.link}
+                section={subItem}
+              />
+            ))}
+          </motion.div>
+        )}
     </motion.div>
   );
 }
