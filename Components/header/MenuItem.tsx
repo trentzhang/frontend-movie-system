@@ -43,19 +43,12 @@ function MenuItem({ page, className }: MenuItemProps) {
         isPageActive(activePage, page.link) ? "bg-slate-300/50 " : ""
       }
       `}
-      //   className={`px-2 py-1  sm:px-4 sm:py-2  rounded-full flex
-      //   ${isPageActive(activePage, page.link) ? "bg-slate-300/50 " : ""}
-      //   `}
+
       onHoverEnd={() => {
         //   if screen is small, set active section without debounce
         if (window.innerWidth < 640) {
           setActivePage(pathname);
         } else {
-          //   debouncedSetActivePage(pathname);
-          // delay setting active page to pathname
-          //   setTimeout(() => {
-          //     setActivePage(pathname);
-          //   }, 900);
           setActivePage(pathname);
         }
       }}
@@ -84,7 +77,7 @@ function MenuItem({ page, className }: MenuItemProps) {
           </span>
         </Link>
       </motion.div>
-      {isPageActive(activePage, page.link) && page.subItems[0] && (
+      {(isPageActive(activePage, page.link)||window.innerWidth < 640) && page.subItems[0] && (
         <motion.div
           //   layout
           transition={{ duration: 4 }}

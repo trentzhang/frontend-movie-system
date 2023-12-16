@@ -94,14 +94,6 @@ export default function Header() {
         <motion.nav className="flex flex-col sm:flex-row  flex-wrap  w-[400px] sm:w-full sm:justify-between sm:items-center text-sm">
           <MenuItem page={menu.home} className="min-w-[240px] grow" />
           <MenuItem page={menu.search} className="grow"/>
-          {/* {user ? (
-            <MenuItem page={loggedIn} />
-          ) : (
-            <>
-              <MenuItem page={menu.logIn} />
-              <MenuItem page={menu.signUp} />
-            </>
-          )} */}
           <MenuItem page={myHome} className="grow"/>
         </motion.nav>
       </activePageContext.Provider>
